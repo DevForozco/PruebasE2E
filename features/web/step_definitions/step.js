@@ -86,4 +86,9 @@ Then('Evaluate the tag created', async function(){
   expect(tags.length).to.greaterThan(0)
 })
 
+//Delete tag
+When('I clic edit tag', async function() {
+  let element = await this.driver.$('.tags-list > li:last-child ');
+  return await element.click();
+})
 

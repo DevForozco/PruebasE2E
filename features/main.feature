@@ -1,1 +1,1 @@
-//copy and paste your feature tu run
+//Copy and paste your feature to run
