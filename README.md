@@ -1,5 +1,7 @@
 # PruebasE2E
 Artefactos de pruenas E2E para funcionalidades de Ghost
+# Versiones necesarias
+Ghost V3.41.1
 ## Escenarios de prueba
 | Functionality       | Scenario "Feature"  |
 | ------------------- | ------------------- |
