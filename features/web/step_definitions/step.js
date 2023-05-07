@@ -319,13 +319,18 @@ When("I enter new lenguage identifier {string}", async function (siteTitle) {
   return await element.setValue(siteTitle);
 });
 
+Then("I get website language updated", async function () {
+  let element = await this.driver.$("html[lang='es']");
+  expect(element).to.exist;
+});
+
 // Delete item from navigation
 When("I click delete navigation item button", async function () {
   let element = await this.driver.$(".gh-blognav-delete");
   return await element.click();
 });
 
-// 
+// Edit item from navigation
 When("I change nav item text {string}", async function (newLabel) {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
   return await element.setValue(newLabel);
@@ -334,4 +339,19 @@ When("I change nav item text {string}", async function (newLabel) {
 Then("I get nav item updated", async function () {
   let element = await this.driver.$(".nav-index");
   expect(element).to.exist;
+});
+
+// Edit website description
+When("I enter site description {string}", async function (siteDescription) {
+  let element = await this.driver.$(
+    ".description-container .ember-text-field.gh-input.ember-view"
+  );
+  return await element.setValue(siteDescription);
+});
+
+Then("I get website description updated", async function () {
+  let element = await this.driver.$("meta[name='description']");
+  let element2 = await this.driver.$("meta[content='New site description']");
+  expect(element).to.exist;
+  expect(element2).to.exist;
 });

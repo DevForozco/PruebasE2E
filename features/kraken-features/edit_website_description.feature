@@ -1,7 +1,7 @@
-Feature: Change publication language
+Feature: Edit website description
 
 @user1 @web
-Scenario: Cambiar lenguaje del sitio web
+Scenario: Modificar descripción del sitio web
   Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "forozcob@uniandes.edu.co"
@@ -12,8 +12,9 @@ Scenario: Cambiar lenguaje del sitio web
   And I wait for 2 seconds
   Given I navigate to page "http://localhost:2368/ghost/#/settings/general"
   And I wait for 2 seconds
-  When I click last expand button
-  When I enter new lenguage identifier "es"
+  When I click expand button
+  When I enter site description "New site description"
   When I click save settings
-  Given I navigate to page "http://localhost:2368"
-  Then I get website language updated
+  And I wait for 2 seconds
+  Given I navigate to page "http://localhost:2368/"
+  Then I get website description updated
