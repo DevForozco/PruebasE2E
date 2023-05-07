@@ -1,1 +1,1 @@
-//Paste your feature here to test 
+#paste a kraken-feature to test

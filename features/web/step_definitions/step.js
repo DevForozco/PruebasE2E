@@ -31,7 +31,12 @@ When('I enter post title {string}', async function (postTitle) {
 });
 
 When('I enter post description {string}', async function (postDescription) {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor.__has-no-content');
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(postDescription);
+});
+
+When('I enter post description edition {string}', async function (postDescription) {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
   return await element.setValue(postDescription);
 });
 
@@ -57,6 +62,11 @@ When('I click a unpublish ratio btn', async function () {
 
 When('I click a publish btn', async function(){
   let element = await this.driver.$('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
+  return await element.click()
+});
+
+When('I click a schedule ratio btn', async function(){
+  let element = await this.driver.$('.gh-publishmenu-section > div:nth-child(2) > div:nth-child(1)');
   return await element.click()
 });
 
