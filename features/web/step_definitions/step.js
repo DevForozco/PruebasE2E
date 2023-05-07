@@ -206,3 +206,30 @@ Then('I evaluate the draft created', async function() {
   this.countTags < tags.length;
 })
 
+// Create new page
+When('I click new page', async function() {
+  let element = await this.driver.$('.gh-nav-list > li:nth-child(3)');
+  return await element.click();
+})
+
+When('I click new page', async function () {
+  let element = await this.driver.$('.ember-view.gh-btn.gh-btn-green');
+  return await element.click()
+});
+
+When('I enter page title {string}', async function (postTitle) {
+  let element = await this.driver.$('.gh-editor-title');
+  return await element.setValue(postTitle);
+});
+
+When('I enter content new page {string}', async function (postDescription) {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(postDescription);
+});
+
+
+Then('I get state new page', async function() {
+  let element = await this.driver.$('fw4.midgrey-l2').getText();
+  expect(element).to.contain('Published')
+})
+
