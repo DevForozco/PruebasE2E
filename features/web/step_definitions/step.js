@@ -324,3 +324,14 @@ When("I click delete navigation item button", async function () {
   let element = await this.driver.$(".gh-blognav-delete");
   return await element.click();
 });
+
+// 
+When("I change nav item text {string}", async function (newLabel) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(newLabel);
+});
+
+Then("I get nav item updated", async function () {
+  let element = await this.driver.$(".nav-index");
+  expect(element).to.exist;
+});
