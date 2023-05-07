@@ -73,7 +73,7 @@ When('I click a schedule ratio btn', async function(){
 //New Tag Step
 
 When('I enter link tag menu', async function() {
-  let element = await this.driver.$('#ember38');
+  let element = await this.driver.$('.gh-nav-list > li:nth-child(4)');
   let tags = await this.driver.$$('.tags-list > *');
   this.countTags = tags.length;
   return await element.click();
