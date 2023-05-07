@@ -1,6 +1,8 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 
+let countTags;
+
 // Generic Steps
 When('I enter email {string}', async function (email) {
   let element = await this.driver.$('#ember8');
@@ -48,6 +50,8 @@ When('I click publish now', async function () {
 
 When('I enter link tag menu', async function() {
   let element = await this.driver.$('#ember38');
+  let tags = await this.driver.$$('.tags-list > *');
+  this.countTags = tags.length;
   return await element.click();
 })
 
@@ -87,8 +91,29 @@ Then('Evaluate the tag created', async function(){
 })
 
 //Delete tag
+When('I save the total tags', async function() {
+  let tags = await this.driver.$$('.tags-list > li');
+  this.countTags = tags.length;
+})
+
 When('I clic edit tag', async function() {
-  let element = await this.driver.$('.tags-list > li:last-child ');
+  let element = await this.driver.$('.tags-list:last-child');
   return await element.click();
+})
+
+When('I clic delete tag', async function() {
+  let element = await this.driver.$('.gh-btn.gh-btn-red');
+  return await element.click();
+})
+
+When('I clic confirm delete tag', async function() {
+  let element = await this.driver.$('.modal-footer > button:nth-child(2)');
+  return await element.click();
+})
+
+Then('Evaluate the tag deleted', async function(){
+  let tags = await this.driver.$$('.tags-list > li');
+  let totalTags = this.countTags -1;
+  expect(tags.length).to.equals(totalTags);
 })
 

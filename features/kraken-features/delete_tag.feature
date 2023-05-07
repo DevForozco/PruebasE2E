@@ -25,5 +25,13 @@ Scenario: Creación de post
   And I click save tag
   And I wait for 3 seconds
   And I enter link tag menu
-  And I wait for 5 seconds
+  And I wait for 3 seconds
+  And I save the total tags
+  And I wait for 1 seconds
   And I clic edit tag
+  And I wait for 2 seconds
+  And I clic delete tag
+  And I wait for 4 seconds
+  And I clic confirm delete tag
+  And I wait for 4 seconds
+  Then Evaluate the tag deleted
