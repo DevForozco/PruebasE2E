@@ -10,6 +10,7 @@ Ghost V3.41.1
 | Eliminar post       | Inactivar post      |
 | Listar post         | Listar posts        |
 | Agendar post        | Agendar post        |
+| Crear draft         | Crear draft         |
 | Crear página        | Creacion de página  |
 | Editar página       | Edición de página   |
 | Eliminar página     | Inactivar página    |
