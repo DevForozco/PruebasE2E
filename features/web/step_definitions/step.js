@@ -131,3 +131,14 @@ Then('Evaluate the tag deleted', async function(){
   expect(tags.length).to.equals(totalTags);
 })
 
+//Edit tag
+When('I clic edit save tag', async function() {
+  let element = await this.driver.$('.tags-list > li > a > h3');
+  console.log("ELEMENTS", element);
+})
+
+//New Internal Tag
+When('I enter new internal tag', async function() {
+  let element = await this.driver.$('.view-actions > div > button:nth-child(2)');
+  return await element.click();
+})
