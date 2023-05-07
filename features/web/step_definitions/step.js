@@ -280,3 +280,23 @@ Then('I see the pages', async function() {
   let tags = await this.driver.$$('.gh-list > *');
   expect(tags.length).to.greaterThanOrEqual(0)
 })
+
+// Change site title
+When("I click expand button", async function () {
+  let element = await this.driver.$(
+    ".gh-setting-first .gh-setting-action .gh-btn"
+  );
+  return await element.click();
+});
+
+When("I enter site title {string}", async function (siteTitle) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(siteTitle);
+});
+
+When("I click save settings", async function () {
+  let element = await this.driver.$(
+    ".gh-btn.gh-btn-blue.gh-btn-icon.ember-view"
+  );
+  return await element.click();
+});
