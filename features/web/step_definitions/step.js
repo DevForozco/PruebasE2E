@@ -280,3 +280,58 @@ Then('I see the pages', async function() {
   let tags = await this.driver.$$('.gh-list > *');
   expect(tags.length).to.greaterThanOrEqual(0)
 })
+
+// Change site title
+When("I click expand button", async function () {
+  let element = await this.driver.$(
+    ".gh-setting-first .gh-setting-action .gh-btn"
+  );
+  return await element.click();
+});
+
+When("I enter site title {string}", async function (siteTitle) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(siteTitle);
+});
+
+When("I click save settings", async function () {
+  let element = await this.driver.$(
+    ".gh-btn.gh-btn-blue.gh-btn-icon.ember-view"
+  );
+  return await element.click();
+});
+
+Then("I get website title updated", async function () {
+  let element = await this.driver.$(".gh-nav-menu-details-blog").getText();
+  expect(element).to.contain("New site title");
+});
+
+// Change website language
+When("I click last expand button", async function () {
+  let element = await this.driver.$(
+    ".gh-setting-last .gh-setting-action .gh-btn"
+  );
+  return await element.click();
+});
+
+When("I enter new lenguage identifier {string}", async function (siteTitle) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(siteTitle);
+});
+
+// Delete item from navigation
+When("I click delete navigation item button", async function () {
+  let element = await this.driver.$(".gh-blognav-delete");
+  return await element.click();
+});
+
+// 
+When("I change nav item text {string}", async function (newLabel) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(newLabel);
+});
+
+Then("I get nav item updated", async function () {
+  let element = await this.driver.$(".nav-index");
+  expect(element).to.exist;
+});
