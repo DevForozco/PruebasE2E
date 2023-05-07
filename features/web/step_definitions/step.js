@@ -19,7 +19,6 @@ When('I click login', async function () {
   return await element.click()
 });
 
-
 // New publication step
 When('I click new post', async function () {
   let element = await this.driver.$('.ember-view.gh-btn.gh-btn-green');
@@ -43,6 +42,21 @@ When('I click publish', async function () {
 
 When('I click publish now', async function () {
   let element = await this.driver.$('.gh-publishmenu-button');
+  return await element.click()
+});
+
+When('I click a post link', async function () {
+  let element = await this.driver.$('.gh-list-row.gh-posts-list-item:last-child');
+  return await element.click()
+});
+
+When('I click a unpublish ratio btn', async function () {
+  let element = await this.driver.$('.gh-publishmenu-radio-button:first-child');
+  return await element.click()
+});
+
+When('I click a publish btn', async function(){
+  let element = await this.driver.$('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
   return await element.click()
 });
 
