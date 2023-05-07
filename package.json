@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@cucumber/cucumber": "7.2.1",
     "chai": "^4.3.7",
-    "kraken-node": "^1.0.24"
+    "kraken-node": "^1.0.24",
+    "playwright": "^1.33.0"
   }
 }
