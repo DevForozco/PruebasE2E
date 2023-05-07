@@ -259,3 +259,19 @@ Then('I get state page edited', async function() {
   expect(element).to.contain('Published')
 })
 
+// Delete page
+When('I click a settings btn', async function() {
+  let element = await this.driver.$('.post-settings');
+  return await element.click();
+})
+
+When('I click a delete btn', async function() {
+  let element = await this.driver.$('.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button');
+  return await element.click();
+})
+
+When('I confirm delete btn', async function() {
+  let element = await this.driver.$('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+  return await element.click();
+})
+
