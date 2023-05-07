@@ -33,7 +33,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     console.log('Dashboard loaded')
     
 
-    /*
+    
     //Interactuar con la aplicación web
     await page.click('css=a.btn.btn-link')
     console.log(`Clicked "cancel". URL is now ${page.url()}`)
@@ -69,8 +69,6 @@ const url = 'http://localhost:3002/ghost/#/signin';
     feedback = await page.$('text="Hi Monitor!"');
     await page.screenshot({path:'./after-login.png'})
     console.log(`Logged in. Your user was ${feedback?'successfully':'not'} created`)
-    //...
-    */
 
     //Finalizar la prueba
     await browser.close();
