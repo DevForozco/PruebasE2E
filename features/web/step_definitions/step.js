@@ -128,3 +128,29 @@ When('I enter new internal tag', async function() {
   let element = await this.driver.$('.view-actions > div > button:nth-child(2)');
   return await element.click();
 })
+
+//Edit staff 
+When('I enter link staff menu', async function() {
+  let element = await this.driver.$('.gh-nav-list > li:nth-child(5)');
+  return await element.click();
+})
+
+When('I clic edit owner', async function() {
+  let element = await this.driver.$('.apps-grid > div:nth-child(3) > a');
+  return await element.click();
+})
+
+When('I enter name owner {string}', async function (name) {
+  let element = await this.driver.$('#user-name');
+  return await element.setValue(name);
+});
+
+When('I save edit owner', async function() {
+  let element = await this.driver.$('.gh-btn.gh-btn-blue');
+  return await element.click();
+})
+
+Then('I get name edit owner', async function() {
+  let element = await this.driver.$('.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3').getText();
+  expect(element).to.equals("Name Test");
+})
