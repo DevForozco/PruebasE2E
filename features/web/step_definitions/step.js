@@ -300,3 +300,16 @@ When("I click save settings", async function () {
   );
   return await element.click();
 });
+
+// Add item to navigation
+When("I click last expand button", async function () {
+  let element = await this.driver.$(
+    ".gh-setting-last .gh-setting-action .gh-btn"
+  );
+  return await element.click();
+});
+
+When("I enter new lenguage identifier {string}", async function (siteTitle) {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(siteTitle);
+});
