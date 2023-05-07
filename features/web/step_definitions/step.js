@@ -207,7 +207,7 @@ Then('I evaluate the draft created', async function() {
 })
 
 // Create new page
-When('I click new page', async function() {
+When('I enter link pages menu', async function() {
   let element = await this.driver.$('.gh-nav-list > li:nth-child(3)');
   return await element.click();
 })
@@ -229,6 +229,32 @@ When('I enter content new page {string}', async function (postDescription) {
 
 
 Then('I get state new page', async function() {
+  let element = await this.driver.$('fw4.midgrey-l2').getText();
+  expect(element).to.contain('Published')
+})
+
+// Edit page
+When('I click a page link', async function () {
+  let element = await this.driver.$('.gh-content-entry-title');
+  return await element.click()
+});
+
+When('I enter content page {string}', async function (postDescription) {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(postDescription);
+});
+
+When('I click update', async function () {
+  let element = await this.driver.$('.gh-publishmenu-trigger');
+  return await element.click()
+});
+
+When('I click update now', async function () {
+  let element = await this.driver.$('.gh-publishmenu-button');
+  return await element.click()
+});
+
+Then('I get state page edited', async function() {
   let element = await this.driver.$('fw4.midgrey-l2').getText();
   expect(element).to.contain('Published')
 })
