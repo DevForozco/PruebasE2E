@@ -15,6 +15,6 @@ Scenario: Login and create post draft
   And I wait for 2 seconds
   When I enter post title "Post draft title"
   When I enter post description "This is a description for post draft"
-  When I click post
+  Given I navigate to page "http://localhost:2368/ghost/#/posts?type=draft"
   And I wait for 2 seconds
   Then I evaluate the draft created

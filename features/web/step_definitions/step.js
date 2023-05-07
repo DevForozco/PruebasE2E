@@ -196,22 +196,6 @@ When('I click Drafts', async function () {
   return await element.click()
 });
 
-
-When('I click new post', async function () {
-  let element = await this.driver.$('.ember-view.gh-btn.gh-btn-green');
-  return await element.click()
-});
-
-When('I enter post title {string}', async function (postTitle) {
-  let element = await this.driver.$('#ember1409');
-  return await element.setValue(postTitle);
-});
-
-When('I enter post description {string}', async function (postDescription) {
-  let element = await this.driver.$('#ember1410');
-  return await element.setValue(postDescription);
-});
-
 When('I click post', async function () {
   let element = await this.driver.$('#ember1406');
   return await element.click()
