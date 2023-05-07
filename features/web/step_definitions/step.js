@@ -168,3 +168,14 @@ Then('I get name edit owner', async function() {
   let element = await this.driver.$('.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3').getText();
   expect(element).to.equals("Name Test");
 })
+
+//Edit mail staff fail
+When('I enter email owner {string}', async function (name) {
+  let element = await this.driver.$('#user-email');
+  return await element.setValue(name);
+});
+
+Then('I validate error button save', async function() {
+  let element = await this.driver.$('.gh-btn.gh-btn-blue').getText();
+  expect(element).to.equals("Retry");
+})
