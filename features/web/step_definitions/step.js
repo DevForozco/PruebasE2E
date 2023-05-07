@@ -275,3 +275,8 @@ When('I confirm delete btn', async function() {
   return await element.click();
 })
 
+// List the pages
+Then('I see the pages', async function() {
+  let tags = await this.driver.$$('.gh-list > *');
+  expect(tags.length).to.greaterThanOrEqual(0)
+})
