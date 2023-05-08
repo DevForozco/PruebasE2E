@@ -1,9 +1,9 @@
 //Importar Playwright
 const playwright = require('playwright');
 
-const urlPost = 'http://localhost:2368/ghost/#/posts'
-const user = 'f.orozcob@uniandes.edu.co'
-const password = 'Pruebas123***'
+const urlPost = 'http://localhost:2368/ghost/#/posts';
+const user = 'f.orozcob@uniandes.edu.co';
+const password = 'Pruebas123***';
 
 //Función flecha asíncrona
 (async () => {
