@@ -51,7 +51,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.f8.fw3.lh-copy.tracked-2.ma0.pa0.h9.br.b--lightgrey.pl3.pr4.flex.items-center.br2.br--left.bg-white')
     await new Promise(r => setTimeout(r, 9000));
-    await page.screenshot({path: './NewPageDraft.png'})
+    await page.screenshot({path: './img/NewPageDraft.png'})
     console.log('Page draft created')
 
 

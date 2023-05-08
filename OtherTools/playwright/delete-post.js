@@ -20,62 +20,62 @@ const password = 'Pruebas123***';
     
 	await page.goto(urlSignin)
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_01.png'})
+	await page.screenshot({path: './img/delete_post_01.png'})
 	
 	await page.fill('#ember8', user);
 	await page.fill('#ember10', password);
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_02.png'})
+	await page.screenshot({path: './img/delete_post_02.png'})
 	
 	//When I click login
 	await page.click('#ember12');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_03.png'})
+	await page.screenshot({path: './img/delete_post_03.png'})
 	
 	await page.goto(urlPost)
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_04.png'})
+	await page.screenshot({path: './img/delete_post_04.png'})
 	
 	//When I click new post
 	await page.click('.ember-view.gh-btn.gh-btn-green');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_05.png'})
+	await page.screenshot({path: './img/delete_post_05.png'})
 	
 	await page.fill('.gh-editor-title', 'post title')
 	await page.fill('.koenig-editor__editor.__mobiledoc-editor', 'This is a description')
 	//When I click publish
 	await page.click('.gh-publishmenu-trigger');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_06.png'})
+	await page.screenshot({path: './img/delete_post_06.png'})
 	
 	//When I click publish now
 	await page.click('.gh-publishmenu-button');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_07.png'})
+	await page.screenshot({path: './img/delete_post_07.png'})
 	
 	await page.goto(urlPost)
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_08.png'})
+	await page.screenshot({path: './img/delete_post_08.png'})
 	
 	//Given I click a post link
 	await page.click('.gh-list-row.gh-posts-list-item:last-child');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_09.png'})
+	await page.screenshot({path: './img/delete_post_09.png'})
 	
 	//When I click publish
 	await page.click('.gh-publishmenu-trigger');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_10.png'})
+	await page.screenshot({path: './img/delete_post_10.png'})
 	
 	//When I click a unpublish ratio btn
 	await page.click('.gh-publishmenu-radio-button:first-child');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_11.png'})
+	await page.screenshot({path: './img/delete_post_11.png'})
 	
 	//When I click a publish btn
 	await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './delete_post_12.png'})
+	await page.screenshot({path: './img/delete_post_12.png'})
 
     //Finalizar la prueba
     await browser.close();

@@ -35,7 +35,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     await new Promise(r => setTimeout(r, 9000));
     console.log(`Clicked "Pages". URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
-    await page.screenshot({path: './Pages.png'})
+    await page.screenshot({path: './img/Pages.png'})
     console.log('Pages loaded')
 
     //Finalizar la prueba

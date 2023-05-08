@@ -47,7 +47,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     await page.click('.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button')
     await new Promise(r => setTimeout(r, 5000));
     await page.click('.gh-btn.gh-btn-red.gh-btn-icon.ember-view')
-    await page.screenshot({path: './PageDeleted.png'})
+    await page.screenshot({path: './img/PageDeleted.png'})
     console.log('Page deleted')
 
     //Finalizar la prueba

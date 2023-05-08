@@ -18,7 +18,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(url);
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './paginaLogin.png'})
+    await page.screenshot({path: './img/paginaLogin.png'})
 
     // Ingresar usuario y password
     await page.fill('#ember8', 'j.aguiar@uniandes.edu.co');
@@ -26,10 +26,10 @@ const url = 'http://localhost:3002/ghost/#/signin';
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './paginaLoginWait.png'})
+    await page.screenshot({path: './img/paginaLoginWait.png'})
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
-    await page.screenshot({path: './Dashboard.png'})
+    await page.screenshot({path: './img/Dashboard.png'})
     console.log('Dashboard loaded')
     
     //Finalizar la prueba

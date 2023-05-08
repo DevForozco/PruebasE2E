@@ -21,33 +21,33 @@ const password = 'Pruebas123***';
 	await new Promise(r => setTimeout(r, 2000));
   	await page.fill('#ember8', user);
   	await page.fill('#ember10', password);
-  	await page.screenshot({path: './create_post_01.png'})
+  	await page.screenshot({path: './img/create_post_01.png'})
   	
   	//When I click login
   	await page.click('#ember12')
 	await new Promise(r => setTimeout(r, 2000));
-  	await page.screenshot({path: './create_post_02.png'})
+  	await page.screenshot({path: './img/create_post_02.png'})
 
   	await page.goto(urlPost)
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './create_post_03.png'})
+	await page.screenshot({path: './img/create_post_03.png'})
   	
   	//When I click new post
   	await page.click('.ember-view.gh-btn.gh-btn-green')
 	await new Promise(r => setTimeout(r, 2000));
   	await page.fill('.gh-editor-title', 'post title');
   	await page.fill('.koenig-editor__editor.__mobiledoc-editor', 'This is a description');
-  	await page.screenshot({path: './create_post_04.png'})
+  	await page.screenshot({path: './img/create_post_04.png'})
   	
   	//When I click publish
   	await page.click('.gh-publishmenu-trigger')
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './create_post_05.png'})
+	await page.screenshot({path: './img/create_post_05.png'})
   	
   	//When I click publish now
   	await page.click('.gh-publishmenu-button')
 	await new Promise(r => setTimeout(r, 2000));
-	await page.screenshot({path: './create_post_06.png'})
+	await page.screenshot({path: './img/create_post_06.png'})
 
     //Finalizar la prueba
     await browser.close();

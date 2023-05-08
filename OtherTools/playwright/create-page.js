@@ -50,7 +50,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     await page.click('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger')
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view')
-    await page.screenshot({path: './NewPage.png'})
+    await page.screenshot({path: './img/NewPage.png'})
     console.log('Page created')
 
 
