@@ -46,7 +46,7 @@ Navegación |
 | Páginas     | Inactivar página    |
 | Páginas      | Listar páginas      |
 | Tags          | Crear Tag           |
-| Tags         | Editar Tag          |
+| Tags         | Crear internal Tag          |
 | Tags      | Eliminar Tag        |
 | Tags     | Visualizar Tag      |
 | Staffs/usuarios     | Editar nombre de un staff    |
