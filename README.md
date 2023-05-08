@@ -1,5 +1,14 @@
 # PruebasE2E
 Artefactos de pruenas E2E para funcionalidades de Ghost
+
+## Integrantes del equipo
+| Integrante          | Correo              |
+| ------------------- | ------------------- |
+| Ricardo Vivas       | j.vivast@uniandes.edu.co |
+| Fabián Orozco       | f.orozcob@uniandes.edu.co |
+| Nicolás Rey         | n.reyd@uniandes.edu.co |
+| Anderson Aguiar     | j.aguiar@uniandes.edu.co |
+
 # Versiones necesarias
 Ghost V3.41.1
 ## Funcionalidades:
