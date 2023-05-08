@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require('playwright');
 
+const urlSignin = 'http://localhost:2368/ghost/#/signin';
 const urlPost = 'http://localhost:2368/ghost/#/posts';
 const user = 'f.orozcob@uniandes.edu.co';
 const password = 'Pruebas123***';
@@ -17,7 +18,7 @@ const password = 'Pruebas123***';
     const context = await browser.newContext();
     const page = await context.newPage();
     
-  	await page.goto(url)
+  	await page.goto(urlSignin)
 	await new Promise(r => setTimeout(r, 2000));
   	await page.fill('#ember8', user);
   	await page.fill('#ember10', password);
