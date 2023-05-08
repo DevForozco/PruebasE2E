@@ -1,7 +1,6 @@
 //Importar Playwright
 const playwright = require('playwright');
-
-const url = 'http://localhost:3002/ghost/#/signin';
+const { nodes, user } = require('../../utils/utils');
 
 //Función flecha asíncrona
 (async () => {
@@ -16,12 +15,10 @@ const url = 'http://localhost:3002/ghost/#/signin';
     const page = await context.newPage();
     
     //Abrir la URL a probar en la página y cargar el login
-    await page.goto(url);
-    await new Promise(r => setTimeout(r, 7000));
-
-    // Ingresar usuario y password
-    await page.fill('#ember8', 'j.aguiar@uniandes.edu.co');
-    await page.fill('#ember10', 'pruebas123+-');
+  	await page.goto(nodes.urlSignin)
+	  await new Promise(r => setTimeout(r, 2000));
+    await page.fill('#ember8', user.mail);
+    await page.fill('#ember10', user.password);
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));

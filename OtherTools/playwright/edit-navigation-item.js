@@ -1,9 +1,6 @@
 //Importar Playwright
 const playwright = require("playwright");
-
-const logInURL = "http://localhost:2368/ghost/#/signin";
-const designSettingsURL = "http://localhost:2368/ghost/#/settings/design";
-const baseURL = "http://localhost:2368";
+const { nodes, user } = require('../../utils/utils');
 
 //Función flecha asíncrona
 (async () => {
@@ -18,24 +15,24 @@ const baseURL = "http://localhost:2368";
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    await page.goto(baseURL);
+    await page.goto(nodes.urlBase);
     await page.screenshot({
-      path: "./OtherTools/playwright/ghostHome.png",
+      path: "./img/ghostHome.png",
     });
     console.log("Unchanged navigation screenshoot completed");
     //Abrir la URL a probar en la página y cargar el login
-    await page.goto(logInURL);
+    await page.goto(nodes.urlSignin);
     await new Promise((r) => setTimeout(r, 2000));
     // Ingresar usuario y password
-    await page.fill("#ember8", "forozcob@uniandes.edu.co");
-    await page.fill("#ember10", "Pruebas123***");
+    await page.fill('#ember8', user.mail);
+    await page.fill('#ember10', user.password);
     await page.click("#ember12");
     await new Promise((r) => setTimeout(r, 2000));
     console.log("Login completed");
     // Ir a la vista de Diseño
-    await page.goto(designSettingsURL);
+    await page.goto(nodes.urlSettingss);
     await page.screenshot({
-      path: "./OtherTools/playwright/designSectionScreen.png",
+      path: "./img/designSectionScreen.png",
     });
     console.log("Design settings screen loaded");
     // Editar un item de la nav
@@ -43,12 +40,12 @@ const baseURL = "http://localhost:2368";
     await page.click(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view");
     await new Promise((r) => setTimeout(r, 1000));
     await page.screenshot({
-      path: "./OtherTools/playwright/designAfterEditingNavItem.png",
+      path: "./img/designAfterEditingNavItem.png",
     });
     console.log("First navigation item edited");
-    await page.goto(baseURL);
+    await page.goto(nodes.urlBase);
     await page.screenshot({
-      path: "./OtherTools/playwright/ghostHomeNavItemEdited.png",
+      path: "./img/ghostHomeNavItemEdited.png",
     });
     console.log("Navigation item modify test completed"); //Finalizar la prueba
     await browser.close();

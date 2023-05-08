@@ -1,10 +1,6 @@
 //Importar Playwright
 const playwright = require('playwright');
-
-const urlSignin = 'http://localhost:2368/ghost/#/signin';
-const urlPosts = 'http://localhost:2368/ghost/#/posts';
-const user = 'f.orozcob@uniandes.edu.co';
-const password = 'Pruebas123***';
+const { nodes, user } = require('../../utils/utils');
 
 //Función flecha asíncrona
 (async () => {
@@ -18,10 +14,10 @@ const password = 'Pruebas123***';
     const context = await browser.newContext();
     const page = await context.newPage();
     
-    await page.goto(urlSignin)
+    await page.goto(nodes.urlSignin)
     await new Promise(r => setTimeout(r, 2000));
-    await page.fill('#ember8', user);
-    await page.fill('#ember10', password);
+    await page.fill('#ember8', user.mail);
+    await page.fill('#ember10', user.password);
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_01.png'})
     
@@ -30,7 +26,7 @@ const password = 'Pruebas123***';
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_02.png'})
     
-    await page.goto(urlPosts)
+    await page.goto(nodes.urlPost)
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_03.png'})
     
@@ -51,7 +47,7 @@ const password = 'Pruebas123***';
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_06.png'})
     
-    await page.goto(urlPosts)
+    await page.goto(nodes.urlPost)
     //When I click new post
     await page.click('.ember-view.gh-btn.gh-btn-green')
     await new Promise(r => setTimeout(r, 2000));
@@ -69,7 +65,7 @@ const password = 'Pruebas123***';
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_09.png'})
     
-    await page.goto(urlPosts)
+    await page.goto(nodes.urlPost)
     await new Promise(r => setTimeout(r, 2000));
     await page.screenshot({path: './img/list_post_10.png'})
     

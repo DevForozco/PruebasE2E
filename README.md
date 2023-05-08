@@ -26,10 +26,25 @@ Ghost V3.41.1
 * Ingresar a la carpeta **./OtherTools/playwright** y ejecutar npm install para descargar las dependencias necesarias
 * Ejecutar node "nombre del archivo".js
 
-Para ejecutar las pruebas con Playwrigth, es necesario configurar la url por la cual está corriendo Ghost, el usuario y la contraseña del usuario creado para iniciar sesión. Esto debe realizarse en cada uno de los 20 archivos con extensión .js que se encuentran en la carpeta **./OtherTools/playwright** así como se evidencia a continuación.
+Para ejecutar las pruebas con Playwrigth, es necesario configurar la url por la cual está corriendo Ghost, el usuario y la contraseña del usuario creado para iniciar sesión. Esto debe realizarse en el archivo **utils/utils.js**.
 
-<img width="919" alt="Captura de Pantalla 2023-05-07 a la(s) 8 41 02 p m" src="https://user-images.githubusercontent.com/124003160/236715798-21d14495-d4b0-4214-83f1-38b23210e1ea.png">
+- urlBase: Validar el puerto de ejecución
 
+```json
+exports.nodes = {
+    urlBase: 'http://localhost:3002/ghost/#/',
+    ...
+}
+```
+
+- Asignar valores de inicio de sesion 
+
+```json
+exports.user = {
+    mail: 'j.aguiar@uniandes.edu.co',
+    password: 'pruebas123+-'
+}
+```
 
 ## Funcionalidades:
  Funcionalidad |
