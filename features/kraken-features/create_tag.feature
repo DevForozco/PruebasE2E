@@ -2,7 +2,7 @@ Feature: Create New Tag
 
 @user1 @web
 Scenario: Creación de post
-  Given I navigate to page "http://localhost:2369/ghost/#/signin"
+  Given I navigate to page "http://localhost:2368/ghost/#/signin"
   And I wait for 3 seconds
   When I enter email "j.vivast@uniandes.edu.co"
   And I wait for 1 seconds
