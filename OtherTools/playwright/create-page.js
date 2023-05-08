@@ -1,7 +1,6 @@
 //Importar Playwright
 const playwright = require('playwright');
-
-const url = 'http://localhost:3002/ghost/#/signin';
+const constantes = require('Constantes');
 
 //Función flecha asíncrona
 (async () => {
@@ -16,7 +15,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
     const page = await context.newPage();
     
     //Abrir la URL a probar en la página y cargar el login
-    await page.goto(url);
+    await page.goto(constantes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
 
     // Ingresar usuario y password
