@@ -20,7 +20,7 @@ Ghost V3.41.1
 # Configuraciones necesarias para ejecutar las pruebas con Playwright
 
 * Ingresar a la carpeta **./OtherTools/playwright** y ejecutar npm install para descargar las dependencias necesarias
-* Ejecutar node <nombre del archivo>.js
+* Ejecutar node "nombre del archivo".js
 
 Para ejecutar las pruebas con Playwrigth, es necesario configurar la url por la cual está corriendo Ghost, el usuario y la contraseña del usuario creado para iniciar sesión. Esto debe realizarse en cada uno de los 20 archivos con extensión .js que se encuentran en la carpeta **./OtherTools/playwright** así como se evidencia a continuación.
 
