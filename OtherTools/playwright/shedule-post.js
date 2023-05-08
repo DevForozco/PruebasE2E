@@ -1,7 +1,11 @@
 //Importar Playwright
 const playwright = require('playwright');
 
-const url = 'http://localhost:3002/ghost/#/signin';
+const urlSignin = 'http://localhost:2368/ghost/#/signin'
+const urlPosts = 'http://localhost:2368/ghost/#/posts'
+const urlSchedule = 'http://localhost:2368/ghost/#/posts?type=scheduled'
+const user = 'f.orozcob@uniandes.edu.co'
+const password = 'Pruebas123***'
 
 //Función flecha asíncrona
 (async () => {
@@ -15,11 +19,10 @@ const url = 'http://localhost:3002/ghost/#/signin';
     const context = await browser.newContext();
     const page = await context.newPage();
     
-	url = 'http://localhost:2368/ghost/#/signin'
-	await page.goto(url)
+	await page.goto(urlSignin)
 	await new Promise(r => setTimeout(r, 2000));
-	await page.fill('#ember8', 'f.orozcob@uniandes.edu.co');
-	await page.fill('#ember10', 'Pruebas123***');
+    await page.fill('#ember8', user);
+    await page.fill('#ember10', password);
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './schedule_post_01.png'})
 	
@@ -28,8 +31,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './schedule_post_02.png'})
 	
-	url = 'http://localhost:2368/ghost/#/posts'
-	await page.goto(url)
+	await page.goto(urlPosts)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './schedule_post_03.png'})
 	
@@ -55,8 +57,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './schedule_post_07.png'})
 	
-	url = 'http://localhost:2368/ghost/#/posts?type=scheduled'
-	await page.goto(url)
+	await page.goto(urlSchedule)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './schedule_post_08.png'})
 

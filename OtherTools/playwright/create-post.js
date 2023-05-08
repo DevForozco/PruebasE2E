@@ -1,7 +1,9 @@
 //Importar Playwright
 const playwright = require('playwright');
 
-const url = 'http://localhost:3002/ghost/#/signin';
+const urlPost = 'http://localhost:2368/ghost/#/posts'
+const user = 'f.orozcob@uniandes.edu.co'
+const password = 'Pruebas123***'
 
 //Función flecha asíncrona
 (async () => {
@@ -17,8 +19,8 @@ const url = 'http://localhost:3002/ghost/#/signin';
     
   	await page.goto(url)
 	await new Promise(r => setTimeout(r, 2000));
-  	await page.fill('#ember8', 'f.orozcob@uniandes.edu.co');
-  	await page.fill('#ember10', 'Pruebas123***');
+  	await page.fill('#ember8', user);
+  	await page.fill('#ember10', password);
   	await page.screenshot({path: './create_post_01.png'})
   	
   	//When I click login
@@ -26,8 +28,7 @@ const url = 'http://localhost:3002/ghost/#/signin';
 	await new Promise(r => setTimeout(r, 2000));
   	await page.screenshot({path: './create_post_02.png'})
 
-  	url = 'http://localhost:2368/ghost/#/posts';
-  	await page.goto(url)
+  	await page.goto(urlPost)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: './create_post_03.png'})
   	
