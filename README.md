@@ -36,3 +36,5 @@ Navegación |
 | Metadatos  | Editar lenguaje de publicación |
 | Navegación  | Editar item de navegación |
 | Navegación  | Eliminar item de navegación  |
+
+**Nota:** la otra herramienta utilizada fur Playwright. El código fuente de estas pruebas está en el directorio **OtherTools/playwright**
