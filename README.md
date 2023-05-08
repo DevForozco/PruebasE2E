@@ -2,24 +2,37 @@
 Artefactos de pruenas E2E para funcionalidades de Ghost
 # Versiones necesarias
 Ghost V3.41.1
+## Funcionalidades:
+ Funcionalidad |
+------------------- |
+Posts |
+Páginas    |
+Tags      |
+Staffs/usuarios       |
+Metadatos    |
+Navegación |
+
 ## Escenarios de prueba
 | Functionality       | Scenario "Feature"  |
 | ------------------- | ------------------- |
-| Crear post          | Publicacion de post |
-| Editar post         | Edicion de post     |
-| Eliminar post       | Inactivar post      |
-| Listar post         | Listar posts        |
-| Agendar post        | Agendar post        |
-| Crear draft         | Crear draft         |
-| Crear página        | Creacion de página  |
-| Editar página       | Edición de página   |
-| Eliminar página     | Inactivar página    |
-| Listar páginas      | Listar páginas      |
-| Crear Tag           | Crear Tag           |
-| Editar Tag          | Editar Tag          |
-| Eliminar Tag        | Eliminar Tag        |
-| Visualizar Tag      | Visualizar Tag      |
-| Agregar miembro     | Agregar miembro     |
-| Editar miembro      | Editar miembro      |
-| Eliminar miembro    | Eliminar miembro    |
-| Visualizar miembros | Visualizar miembros |
+| Posts          | Publicacion de post |
+| Posts       | Edicion de post     |
+| Posts      | Inactivar post      |
+| Posts         | Listar posts        |
+| Posts        | Agendar post        |
+| Páginas         | Crear draft         |
+| Páginas        | Creacion de página  |
+| Páginas        | Edición de página   |
+| Páginas     | Inactivar página    |
+| Páginas      | Listar páginas      |
+| Tags          | Crear Tag           |
+| Tags         | Editar Tag          |
+| Tags      | Eliminar Tag        |
+| Tags     | Visualizar Tag      |
+| Staffs/usuarios     | Editar nombre de un staff    |
+| Staffs/usuarios      | Editar email / generar error     |
+| Metadatos  | Editar descripción del sitio |
+| Metadatos  | Editar título del sitio |
+| Metadatos  | Editar lenguaje de publicación |
+| Navegación  | Editar item de navegación |
+| Navegación  | Eliminar item de navegación  |
