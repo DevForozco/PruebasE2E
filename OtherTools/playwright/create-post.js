@@ -14,7 +14,7 @@ const constantes = require('Constantes');
     const context = await browser.newContext();
     const page = await context.newPage();
     
-  	await page.goto(url)
+  	await page.goto(constantes.urlSignin)
 	await new Promise(r => setTimeout(r, 2000));
   	await page.fill('#ember8', constantes.user);
   	await page.fill('#ember10', constantes.password);
