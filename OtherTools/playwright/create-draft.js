@@ -1,7 +1,6 @@
 //Importar Playwright
 const playwright = require('playwright');
-
-const url = 'http://localhost:3002/ghost/#/signin';
+const constantes = require('Constantes');
 
 //Función flecha asíncrona
 (async () => {
@@ -16,20 +15,18 @@ const url = 'http://localhost:3002/ghost/#/signin';
     const page = await context.newPage();
     
     //Abrir la URL a probar en la página y cargar el login
-    await page.goto(url);
+    await page.goto(constantes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
 
     // Ingresar usuario y password
-    await page.fill('#ember8', 'j.aguiar@uniandes.edu.co');
-    await page.fill('#ember10', 'pruebas123+-');
+  	await page.fill('#ember8', constantes.user);
+  	await page.fill('#ember10', constantes.password);
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
-    console.log('Dashboard loaded')
-    
-    
+
     // Abrir draft
     await page.click('.gh-nav-view-list > li:nth-child(1)')
     await new Promise(r => setTimeout(r, 9000));
@@ -53,7 +50,6 @@ const url = 'http://localhost:3002/ghost/#/signin';
     await new Promise(r => setTimeout(r, 9000));
     await page.screenshot({path: './img/NewPageDraft.png'})
     console.log('Page draft created')
-
 
     //Finalizar la prueba
     await browser.close();
