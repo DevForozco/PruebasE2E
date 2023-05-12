@@ -13,7 +13,7 @@ const { nodes, user } = require('../../utils/utils');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
@@ -27,8 +27,8 @@ const { nodes, user } = require('../../utils/utils');
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
     console.log('Dashboard loaded')
-    
-    
+
+
     // Abrir draft
     await page.click('.gh-nav-view-list > li:nth-child(1)')
     await new Promise(r => setTimeout(r, 9000));
@@ -50,7 +50,7 @@ const { nodes, user } = require('../../utils/utils');
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.f8.fw3.lh-copy.tracked-2.ma0.pa0.h9.br.b--lightgrey.pl3.pr4.flex.items-center.br2.br--left.bg-white')
     await new Promise(r => setTimeout(r, 9000));
-    await page.screenshot({path: './img/NewPageDraft.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/NewPageDraft.png'})
     console.log('Page draft created')
 
 

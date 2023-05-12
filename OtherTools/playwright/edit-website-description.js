@@ -30,20 +30,20 @@ const { nodes, user } = require('../../utils/utils');
     await page.click(".gh-setting-first .gh-setting-action .gh-btn");
     // Cambiar lenguaje del sitio web
     await page.screenshot({
-      path: "./img/descriptionSectionExpanded.png",
+      path: "comparativeReport/screenshots/ref-3.3/descriptionSectionExpanded.png",
     });
     await page.fill(
       ".description-container .ember-text-field.gh-input.ember-view",
       "This is the new description for Ghost!"
     );
     await page.screenshot({
-      path: "./img/websiteDescriptionEdited.png",
+      path: "comparativeReport/screenshots/ref-3.3/websiteDescriptionEdited.png",
     });
     await page.click(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view");
     console.log("Website description changed");
     await new Promise((r) => setTimeout(r, 1500));
     await page.screenshot({
-      path: "./img/websiteDescriptionSavedChanges.png",
+      path: "comparativeReport/screenshots/ref-3.3/websiteDescriptionSavedChanges.png",
     });
     console.log("Website description test completed"); //Finalizar la prueba
     await browser.close();

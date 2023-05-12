@@ -13,11 +13,11 @@ const { nodes, user } = require('../../utils/utils');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './img/paginaLogin.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/paginaLogin.png'})
 
     // Ingresar usuario y password
     await page.fill('#ember8', user.mail);
@@ -25,12 +25,12 @@ const { nodes, user } = require('../../utils/utils');
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './img/paginaLoginWait.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/paginaLoginWait.png'})
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
-    await page.screenshot({path: './img/Dashboard.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/Dashboard.png'})
     console.log('Dashboard loaded')
-    
+
     //Finalizar la prueba
     await browser.close();
   }

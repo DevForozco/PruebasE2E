@@ -13,11 +13,11 @@ const { nodes, user } = require('../../utils/utils');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './img/edit_staff_0.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_0.png'})
 
     // Ingresar usuario y password
     await page.fill('#ember8', user.mail);
@@ -25,31 +25,31 @@ const { nodes, user } = require('../../utils/utils');
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: './img/edit_staff_1.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_1.png'})
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 5000));
-    await page.screenshot({path: './img/edit_staff_2.png'});
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_2.png'});
 
     await new Promise(r => setTimeout(r, 3000));
     await page.click('.gh-nav-list > li:nth-child(5)');
-    await page.screenshot({path: './img/edit_staff_3.png'});
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_3.png'});
 
     await new Promise(r => setTimeout(r, 3000));
     await page.click('.apps-grid > div:nth-child(3) > a');
-    await page.screenshot({path: './img/edit_staff_4.png'});
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_4.png'});
 
     await new Promise(r => setTimeout(r, 3000));
     await page.fill('#user-name', 'Name Test');
-    await page.screenshot({path: './img/edit_staff_5.png'});
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_5.png'});
 
     await new Promise(r => setTimeout(r, 2000));
     await page.click('.gh-btn.gh-btn-blue');
-    await page.screenshot({path: './img/edit_staff_6.png'});
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_6.png'});
 
     await new Promise(r => setTimeout(r, 3000));
     await page.click('.gh-nav-list > li:nth-child(5)');
-    await page.screenshot({path: './img/edit_staff_7.png'});  
-    
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_7.png'});
+
     //Finalizar la prueba
     await browser.close();
   }

@@ -13,7 +13,7 @@ const { nodes, user } = require('../../utils/utils');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
@@ -27,8 +27,8 @@ const { nodes, user } = require('../../utils/utils');
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
     console.log('Dashboard loaded')
-    
-    
+
+
     // Abrir menú Pages
     await page.click('.gh-nav-list > li:nth-child(3)')
     await new Promise(r => setTimeout(r, 9000));
@@ -47,7 +47,7 @@ const { nodes, user } = require('../../utils/utils');
     await page.click('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger')
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view')
-    await page.screenshot({path: './img/PageEdited.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/PageEdited.png'})
     console.log('Page edited')
 
     //Finalizar la prueba

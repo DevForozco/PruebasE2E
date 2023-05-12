@@ -17,7 +17,7 @@ const { nodes, user } = require('../../utils/utils');
 
     await page.goto(nodes.urlBase);
     await page.screenshot({
-      path: "./img/ghostHome.png",
+      path: "comparativeReport/screenshots/ref-3.3/ghostHome.png",
     });
     console.log("Unchanged navigation screenshoot completed");
     //Abrir la URL a probar en la página y cargar el login
@@ -32,7 +32,7 @@ const { nodes, user } = require('../../utils/utils');
     // Ir a la vista de Diseño
     await page.goto(nodes.urlSettingss);
     await page.screenshot({
-      path: "./img/designSectionScreen.png",
+      path: "comparativeReport/screenshots/ref-3.3/designSectionScreen.png",
     });
     console.log("Design settings screen loaded");
     // Editar un item de la nav
@@ -40,12 +40,12 @@ const { nodes, user } = require('../../utils/utils');
     await page.click(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view");
     await new Promise((r) => setTimeout(r, 1000));
     await page.screenshot({
-      path: "./img/designAfterEditingNavItem.png",
+      path: "comparativeReport/screenshots/ref-3.3/designAfterEditingNavItem.png",
     });
     console.log("First navigation item edited");
     await page.goto(nodes.urlBase);
     await page.screenshot({
-      path: "./img/ghostHomeNavItemEdited.png",
+      path: "comparativeReport/screenshots/ref-3.3/ghostHomeNavItemEdited.png",
     });
     console.log("Navigation item modify test completed"); //Finalizar la prueba
     await browser.close();

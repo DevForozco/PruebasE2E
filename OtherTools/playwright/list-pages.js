@@ -13,7 +13,7 @@ const { nodes, user } = require('../../utils/utils');
     const browser = await playwright[browserType].launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    
+
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin);
     await new Promise(r => setTimeout(r, 7000));
@@ -27,14 +27,14 @@ const { nodes, user } = require('../../utils/utils');
     await page.click('#ember12')
     await new Promise(r => setTimeout(r, 9000));
     console.log('Dashboard loaded')
-    
-    
+
+
     // Abrir menú Pages
     await page.click('.gh-nav-list > li:nth-child(3)')
     await new Promise(r => setTimeout(r, 9000));
     console.log(`Clicked "Pages". URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
-    await page.screenshot({path: './img/Pages.png'})
+    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/Pages.png'})
     console.log('Pages loaded')
 
     //Finalizar la prueba

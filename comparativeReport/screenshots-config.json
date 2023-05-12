@@ -1,0 +1,18 @@
+{
+    "basePath": "./comparativeReport/screenshots/",
+    "extencion": ".png",
+    "versions":["v1","v2","diff"],
+    "paths":["ref-3.3/","test-4.4/","diff/"],
+    "screenshots": [
+        {
+            "num": "1",
+            "functionality": "post",
+            "action": "login"
+        },
+        {
+            "num": "2",
+            "functionality": "post",
+            "action": "fillUser"
+        }
+    ]
+}

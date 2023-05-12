@@ -37,7 +37,7 @@ exports.nodes = {
 }
 ```
 
-- Asignar valores de inicio de sesion 
+- Asignar valores de inicio de sesion
 
 ```json
 exports.user = {
@@ -82,3 +82,10 @@ Navegación |
 | Navegación  | Eliminar item de navegación  |
 
 **Nota:** la otra herramienta utilizada fur Playwright. El código fuente de estas pruebas está en el directorio **OtherTools/playwright**
+
+
+Generación del reporte
+
+```py
+python3 comparativeReport/generateComparativeReport.py
+```

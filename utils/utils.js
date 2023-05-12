@@ -12,3 +12,7 @@ exports.user = {
     mail: 'j.aguiar@uniandes.edu.co',
     password: 'pruebas123+-'
 }
+
+exports.ghostEjecutado = {
+    version: "V1"
+}
