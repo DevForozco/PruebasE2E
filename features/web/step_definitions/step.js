@@ -442,3 +442,16 @@ When("I click save settings v5", async function () {
   );
   return await element.click();
 });
+
+//Change language v5
+When("I click expand button v5", async function () {
+  let element = await this.driver.$(
+    ".gh-expandable > div:nth-child(1) > div:nth-child(1) > button"
+  );
+  return await element.click();
+});
+
+Then("I get website title updated v5", async function () {
+  let element = await this.driver.$(".gh-nav-menu-details-sitetitle").getText();
+  expect(element).to.contain("New site title");
+});
