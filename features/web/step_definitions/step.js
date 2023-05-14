@@ -468,3 +468,19 @@ Then("I get item navigation deleted v5", async function () {
   let items = await this.driver.$$(".gh-main-section-content > .gh-blognav-delete");
   expect(items.length).to.lessThan(2);
 });
+
+// Create new page v5
+When("I click a settings btn v5", async function () {
+  let element = await this.driver.$(".settings-menu-toggle");
+  return await element.click();
+});
+
+When("I click a delete btn v5", async function () {
+  let element = await this.driver.$(".settings-menu-delete-button");
+  return await element.click();
+});
+
+Then("I get page deleted", async function () {
+  let items = await this.driver.$$(".gh-post-list-cta.edit");
+  expect(items.length).to.lessThan(2);
+});
