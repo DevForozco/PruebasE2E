@@ -462,3 +462,9 @@ Then("I get website title updated v5", async function () {
   let element = await this.driver.$(".gh-nav-menu-details-sitetitle").getText();
   expect(element).to.contain("New site title");
 });
+
+// Delete item from navigation v5
+Then("I get item navigation deleted v5", async function () {
+  let items = await this.driver.$$(".gh-main-section-content > .gh-blognav-delete");
+  expect(items.length).to.lessThan(2);
+});
