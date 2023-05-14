@@ -427,3 +427,18 @@ Then('I get post deleted text', async function() {
   let element = await this.driver.$('.gh-notification-title').getText();
   expect(element).to.contain('Post successfully reverted to a draft.')
 })
+
+//Change language v5
+When("I click last expand button v5", async function () {
+  let element = await this.driver.$(
+    ".gh-expandable > div:nth-child(3) > div:nth-child(1) > button"
+  );
+  return await element.click();
+});
+
+When("I click save settings v5", async function () {
+  let element = await this.driver.$(
+    ".view-actions > button"
+  );
+  return await element.click();
+});
