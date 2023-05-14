@@ -386,3 +386,24 @@ When('I enter link tag menu v5', async function() {
   this.countTags = tags.length;
   return await element.click();
 })
+
+// New publication step
+When('I click new post v5', async function () {
+  let element = await this.driver.$('.view-actions-top-row > a:nth-child(1)');
+  return await element.click()
+});
+
+When('I click publish v5', async function () {
+  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  return await element.click()
+});
+
+When('I click publish now v5', async function () {
+  let element = await this.driver.$('.gh-publish-cta > button:nth-child(1)');
+  return await element.click()
+});
+
+Then('I get post succesfully text', async function() {
+  let element = await this.driver.$('.gh-publish-cta > button > span').getText();
+  expect(element).to.contain('Publish post, right now')
+})
