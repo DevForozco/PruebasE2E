@@ -7,13 +7,17 @@ Scenario: Creación de post
   When I enter email "j.vivast@uniandes.edu.co"
   And I wait for 1 seconds
   And I enter password "Duitama0420*"
+  And I take screenshot with name "ref-3.x/1-create-tag-login-v1"
   And I wait for 2 seconds
   And I click login
   And I wait for 2 seconds
+  And I take screenshot with name "ref-3.x/2-create-tag-login-v1"
   And I enter link tag menu
   And I wait for 2 seconds
+  And I take screenshot with name "ref-3.x/3-create-tag-login-v1"
   And I enter new tag
   And I wait for 2 seconds
+  And I take screenshot with name "ref-3.x/4-create-tag-login-v1"
   And I enter name tag "Tag de prueba"
   And I wait for 1 seconds
   And I enter color tag "FF4000"
@@ -22,8 +26,11 @@ Scenario: Creación de post
   And I wait for 1 seconds
   And I enter description tag "This is a description for my new tag"
   And I wait for 1 seconds
+  And I take screenshot with name "ref-3.x/5-create-tag-login-v1"
   And I click save tag
   And I wait for 3 seconds
+  And I take screenshot with name "ref-3.x/6-create-tag-login-v1"
   And I enter link tag menu
   And I wait for 5 seconds
+  And I take screenshot with name "ref-3.x/7-create-tag-login-v1"
   Then Evaluate the tag created
