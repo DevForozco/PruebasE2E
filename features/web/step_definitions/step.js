@@ -407,3 +407,23 @@ Then('I get post succesfully text', async function() {
   let element = await this.driver.$('.gh-publish-cta > button > span').getText();
   expect(element).to.contain('Publish post, right now')
 })
+
+When('I click a unpublish ratio btn v5', async function () {
+  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  return await element.click()
+});
+
+When('I click a publish btn v5', async function(){
+  let element = await this.driver.$('.gh-revert-to-draft');
+  return await element.click()
+});
+
+When('I click a post link v5', async function () {
+  let element = await this.driver.$('.posts-list.gh-list > div:nth-child(1)');
+  return await element.click()
+});
+
+Then('I get post deleted text', async function() {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Post successfully reverted to a draft.')
+})
