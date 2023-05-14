@@ -1,0 +1,26 @@
+{
+    "basePath": "./comparativeReport/screenshots/",
+    "extencion": ".png",
+    "versions":["v1","v2","diff"],
+    "paths":["ref-3.x/","test-5.x/","diff/"],
+    "viewport": {
+        "Height":600,
+        "Width":800
+    },
+    "browsers":["chromium", "webkit", "firefox"],
+    "options":{
+        "output": {
+            "errorColor": {
+                "red": 255,
+                "green": 0,
+                "blue": 255
+            },
+            "errorType": "movement",
+            "largeImageThreshold": 1200,
+            "useCrossOrigin": false,
+            "outputDiff": true
+        },
+        "scaleToSameSize": true,
+        "ignore": "antialiasing"
+    }
+}
