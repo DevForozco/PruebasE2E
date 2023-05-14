@@ -266,15 +266,22 @@ When('I click a settings btn', async function() {
   return await element.click();
 })
 
-When('I click a delete btn', async function() {
-  let element = await this.driver.$('.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button');
+When("I click a delete btn", async function () {
+  let element = await this.driver.$(".settings-menu-delete-button");
   return await element.click();
-})
+});
 
-When('I confirm delete btn', async function() {
-  let element = await this.driver.$('.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
+When("I confirm delete btn", async function () {
+  let element = await this.driver.$(
+    ".gh-btn.gh-btn-red.gh-btn-icon.ember-view"
+  );
   return await element.click();
-})
+});
+
+Then("I see no pages text", async function () {
+  let element = await this.driver.$(".no-posts-box");
+  expect(element).to.exist;
+});
 
 // List the pages
 Then('I see the pages', async function() {
