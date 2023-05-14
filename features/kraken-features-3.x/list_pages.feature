@@ -7,8 +7,11 @@ Scenario: Login and list pages
   When I enter email "j.aguiar@uniandes.edu.co"
   When I enter password "prueba123+-"
   And I wait for 2 seconds
+  And I take screenshot with name "ref-3.x/1-list-pages-v1"
   When I click login
   And I wait for 2 seconds
+  And I take screenshot with name "ref-3.x/2-list-pages-v1"
   And I enter link pages menu
   And I wait for 7 seconds
+  And I take screenshot with name "ref-3.x/3-list-pages-v1"
   Then I see the pages

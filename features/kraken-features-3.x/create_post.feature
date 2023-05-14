@@ -16,7 +16,7 @@ Scenario: Login and publish post
   And I take screenshot with name "ref-3.x/3-create-post-v1"
   When I click new post
   And I wait for 2 seconds
-  And I take screenshot with name "ref-4.x/1-create-post-v1"
+  And I take screenshot with name "ref-3.x/1-create-post-v1"
   When I enter post title "post title"
   When I enter post description "This is a description"
   And I take screenshot with name "ref-3.x/5-create-post-v1"
