@@ -14,3 +14,4 @@ Scenario: Eliminar un item de la navegacion
   When I click delete navigation item button
   When I click save settings
   And I wait for 2 seconds
+  Then I get item navigation deleted

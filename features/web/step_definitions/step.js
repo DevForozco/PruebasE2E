@@ -331,6 +331,13 @@ When("I click delete navigation item button", async function () {
   return await element.click();
 });
 
+Then("I get item navigation deleted", async function () {
+  let items = await this.driver.$$(
+    ".gh-blognav-item.gh-blognav-item--sortable.ember-view"
+  );
+  expect(items.length).to.lessThan(4);
+});
+
 // Edit item from navigation
 When("I change nav item text {string}", async function (newLabel) {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
