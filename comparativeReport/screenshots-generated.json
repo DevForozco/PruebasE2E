@@ -2,13 +2,38 @@
     "screenshots": [
         {
             "num": "1",
-            "functionality": "post",
-            "action": "login"
+            "action": "create",
+            "functionality": "post"
         },
         {
             "num": "2",
-            "functionality": "post",
-            "action": "fillUser"
+            "action": "create",
+            "functionality": "post"
+        },
+        {
+            "num": "3",
+            "action": "create",
+            "functionality": "post"
+        },
+        {
+            "num": "4",
+            "action": "create",
+            "functionality": "post"
+        },
+        {
+            "num": "5",
+            "action": "create",
+            "functionality": "post"
+        },
+        {
+            "num": "6",
+            "action": "create",
+            "functionality": "post"
+        },
+        {
+            "num": "7",
+            "action": "create",
+            "functionality": "post"
         }
     ]
 }
