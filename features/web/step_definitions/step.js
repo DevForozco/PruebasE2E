@@ -3,6 +3,7 @@ const { expect } = require('chai');
 
 let countTags;
 
+//Add steps to versión 5.x
 // Generic Steps
 When('I enter email {string}', async function (email) {
   let element = await this.driver.$('#ember8');
@@ -355,3 +356,33 @@ Then("I get website description updated", async function () {
   expect(element).to.exist;
   expect(element2).to.exist;
 });
+
+//Add steps to versión 5.x
+
+// Generic Steps
+When('I enter email v5 {string}', async function (email) {
+  let element = await this.driver.$('#identification');
+  return await element.setValue(email);
+});
+
+When('I enter password v5 {string}', async function (password) {
+  let element = await this.driver.$('#password');
+  return await element.setValue(password);
+});
+
+When('I click login v5', async function () {
+  let element = await this.driver.$('#ember5');
+  return await element.click()
+});
+
+When("I take screenshot with name {string}", async function (screenName) {
+  return await this.driver.saveScreenshot(`./comparativeReport/screenshots/${screenName}.png`);
+});
+
+//New Tag Step
+When('I enter link tag menu v5', async function() {
+  let element = await this.driver.$('.gh-nav-list.gh-nav-manage > li:nth-child(3)');
+  let tags = await this.driver.$$('.tags-list > *');
+  this.countTags = tags.length;
+  return await element.click();
+})

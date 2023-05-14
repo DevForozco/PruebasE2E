@@ -2,7 +2,7 @@
     "basePath": "./comparativeReport/screenshots/",
     "extencion": ".png",
     "versions":["v1","v2","diff"],
-    "paths":["ref-3.3/","test-4.4/","diff/"],
+    "paths":["ref-3.x/","test-5.x/","diff/"],
     "screenshots": [
         {
             "num": "1",
