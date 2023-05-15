@@ -26,3 +26,4 @@ Scenario: Login and publish post
   When I click publish now
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/7-create-post-v1"
+  Then I get title post succesfully

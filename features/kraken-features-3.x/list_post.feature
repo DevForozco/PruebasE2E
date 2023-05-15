@@ -43,3 +43,4 @@ Scenario: Login, publish & list posts
   Given I navigate to page "http://localhost:2368/ghost/#/posts"
   And I wait for 3 seconds
   And I take screenshot with name "ref-3.x/12-list-post-v1"
+  Then I see at least one post

@@ -40,3 +40,4 @@ Scenario: Login and unpublish post
   And I take screenshot with name "ref-3.x/11-unpublish-post-v1"
   When I click a publish btn
   And I wait for 3 seconds
+  Then I get title post deleted succesfully

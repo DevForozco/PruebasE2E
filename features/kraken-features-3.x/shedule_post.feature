@@ -29,8 +29,4 @@ Scenario: Login and schedule post
   When I click a publish btn
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/8-schedule-post-v1"
-  And I wait for 2 seconds
-  Given I navigate to page "http://localhost:2368/ghost/#/posts?type=scheduled"
-  And I wait for 2 seconds
-  And I take screenshot with name "ref-3.x/9-schedule-post-v1"
-  And I wait for 2 seconds
+  Then I get title post scheduled succesfully

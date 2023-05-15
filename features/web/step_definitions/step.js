@@ -71,6 +71,32 @@ When('I click a schedule ratio btn', async function(){
   return await element.click()
 });
 
+Then("I get title post succesfully", async function () {
+  let element = await this.driver.$(".gh-notification-title").getText();
+  expect(element).to.contain("Published");
+});
+
+Then("I get title post deleted succesfully", async function () {
+  let element = await this.driver.$(".gh-notification-title").getText();
+  expect(element).to.contain("Saved");
+});
+
+Then("I get title post updated succesfully", async function () {
+  let element = await this.driver.$(".gh-notification-title").getText();
+  expect(element).to.contain("Updated");
+});
+
+Then("I see at least one post", async function () {
+  let element = await this.driver.$(".gh-list-row.gh-posts-list-item");
+  expect(element).to.exist;
+});
+
+Then("I get title post scheduled succesfully", async function () {
+  let element = await this.driver.$(".gh-notification-title").getText();
+  expect(element).to.contain("Scheduled");
+});
+
+
 //New Tag Step
 
 When('I enter link tag menu', async function() {
