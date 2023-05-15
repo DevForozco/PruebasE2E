@@ -109,7 +109,7 @@ async function compairImages(callback){
             <div class="col-4 text-center">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Test ghost v4.x</h5>
+              <h5 class="card-title">Test ghost v5.x</h5>
             </div>
             <img src="./${paths[1]}${key}-${versions[1]}${extencion}" class="img-fluid card-img-bottom" alt="after-${key}">
           </div>
