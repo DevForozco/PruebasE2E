@@ -7,10 +7,58 @@ Artefactos de pruenas E2E para funcionalidades de Ghost
 | Ricardo Vivas       | j.vivast@uniandes.edu.co |
 | Fabián Orozco       | f.orozcob@uniandes.edu.co |
 | Nicolás Rey         | n.reyd@uniandes.edu.co |
-| Anderson Aguiar     | j.aguiar@uniandes.edu.co |
 
-# Versiones necesarias
-Ghost V3.41.1
+## Versiones necesarias
+| Ghost          | Descripción              |
+| ------------------- | ------------------- |
+| V3.41.1       |  Usado para para probar y generar evidencias en carpeta /ref-3.x  |
+| V5.1.1       |  Usado para para probar y generar evidencias en carpeta /test-5.x  |__
+
+## Estandares de nombramiento
+Las imagenes generadas por el Resemble.js tendran la siguiente estructura
+- num-funcionalidad-accion-version.png
+
+**Donde**
+
+> num: numero del pantallazo dentro de la funcionalidad <br>
+> funconalidad: page | post | tag | staf <br>
+> accion: crear | eliminar | editar | listar <br>
+> version: V1 | V2 -> Corresponden a las versiones ghost 3.x o 5.x <br>
+
+- En caso de ser V1 los screenshots se almacenaran en la ruta screenshots/ref-3.X
+- En caso de ser V2 los screenshots se almacenaran en la ruta screenshots/test-5.x
+- La libraria tomara los screenshots V1 y V2 para compararlos y asi generar una tercera imagen en la carpeta screenshots/diff
+
+**Ejemplo**
+> 1-post-create-v1.png <br>
+> 1-post-create-v2.png <br>
+> 1-post-create-diff.png <br>
+ 
+ ## Generación del reporte
+Para el ejercicio de realizar las pruebas de regresión visual VRT se han configurado con [Resemble.js](https://github.com/rsmbl/Resemble.js/blob/master/README.md)
+- Una vez abieta la solución vamos a ejecutar el comando para instalar las diferentes dependencias `npm i`
+- Una vez instaladas las dependencias desde la carpeta raiz ejecutaremos el siguiente comando `node resemblejs/index.js`
+- Este comando se encargara de generar el reporte ejecutando los siguientes pasos
+
+```sh
+[X] Data prepared
+[X] Compared images
+[X] Report generated
+```
+
+Donde, como resultado obtendremos un [reporte html ](https://github.com/DevForozco/PruebasE2E/blob/main/comparativeReport/screenshots/reporteRegresionVisualGHOST.html)
+
+En la siguiente tabla, se representa un resultado de ejemplo, que representa una de las ejecuciones de la regresipon visual, donde se evidencia las diferencias que existen entre las imagenes a comprar
+
+|      (index)      | isSameDimensions |   dimensionDifference   | rawMisMatchPercentage | misMatchPercentage | diffBounds | analysisTime |
+|-------------------|------------------|-------------------------|-----------------------|--------------------|------------|--------------|
+| 1-change-language |       true       | { width: 0, height: 0 } |   3.777142396907217   |       '3.78'       |  [Object]  |     158      |
+|   1-create-post   |       true       | { width: 0, height: 0 } |  3.6142157348665083   |       '3.61'       |  [Object]  |     259      |
+|   6-create-tag    |       true       | { width: 0, height: 0 } |   2.58752147766323    |       '2.59'       |  [Object]  |     162      |
+|   7-create-post   |       true       | { width: 0, height: 0 } |   3.923473433782712   |       '3.92'       |  [Object]  |     201      |
+|   7-create-tag    |       true       | { width: 0, height: 0 } |  2.3205541237113403   |       '2.32'       |  [Object]  |     154      |
+
+___
 
 # Configuraciones necesarias para ejecutar las pruebas con Kraken
 
