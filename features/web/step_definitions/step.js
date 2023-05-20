@@ -28,14 +28,44 @@ When('I click new post', async function () {
   return await element.click()
 });
 
-When('I enter post positive title', async function () {
+When('I enter post empty title', async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(' ');
+});
+
+When('I enter post valid title', async function () {
   let element = await this.driver.$(".gh-editor-title ");
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-When('I enter post positive description', async function () {
+When('I enter post exceeds titulo', async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
+When('I enter post invalid title', async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+When('I enter post valid description', async function () {
   let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
   return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
+When('I enter post empty description', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(' ');
+});
+
+When('I enter post exceeds description', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
+When('I enter post invalid description', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 When('I enter post description edition {string}', async function (postDescription) {
@@ -46,6 +76,11 @@ When('I enter post description edition {string}', async function (postDescriptio
 When('I click publish', async function () {
   let element = await this.driver.$('.gh-publishmenu-trigger');
   return await element.click()
+});
+
+When('I validate publish btn', async function () {
+  let element = await this.driver.$('.gh-publishmenu-trigger');
+  expect(element.isReactElement).equals(false)
 });
 
 When('I click publish now', async function () {
@@ -246,12 +281,12 @@ When('I click new page', async function () {
   return await element.click()
 });
 
-When('I enter positive title', async function () {
+When('I enter valid title', async function () {
   let element = await this.driver.$('.gh-editor-title');
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-When('I enter positive content', async function () {
+When('I enter valid content', async function () {
   let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
   return await element.setValue(dataAPriori[rowRandom].description100);
 });

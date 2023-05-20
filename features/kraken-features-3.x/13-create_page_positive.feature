@@ -16,8 +16,8 @@ Scenario: Login and create new page positive scenario
   When I click new page
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-create-new-page-v1"
-  When I enter positive title
-  When I enter positive content
+  When I enter valid title
+  When I enter valid content
   When I click publish
   And I take screenshot with name "ref-3.x/5-create-new-page-v1"
   And I wait for 2 seconds
