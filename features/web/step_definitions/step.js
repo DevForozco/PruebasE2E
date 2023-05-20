@@ -28,14 +28,14 @@ When('I click new post', async function () {
   return await element.click()
 });
 
-When('I enter post title {string}', async function (postTitle) {
+When('I enter post positive title', async function () {
   let element = await this.driver.$(".gh-editor-title ");
-  return await element.setValue(postTitle);
+  return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-When('I enter post description {string}', async function (postDescription) {
+When('I enter post positive description', async function () {
   let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
-  return await element.setValue(postDescription);
+  return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter post description edition {string}', async function (postDescription) {

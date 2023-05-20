@@ -17,8 +17,8 @@ Scenario: Login and publish post
   When I click new post
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/1-create-post-v1"
-  When I enter post positive title
-  When I enter post positive description
+  When I enter post title "post title"
+  When I enter post description "This is a description"
   And I take screenshot with name "ref-3.x/5-create-post-v1"
   When I click publish
   And I wait for 2 seconds
