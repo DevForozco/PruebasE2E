@@ -2,6 +2,8 @@
     "USERNAME": "j.vivast@uniandes.edu.co",
     "PASSWORD": "Duitama0420*",
     "URL": "http://localhost:2368/ghost/#/signin",
+    "URLBASE": "http://localhost:2368",
+    "URLGENERAL": "http://localhost:2368/ghost/#/settings/general",
 
     "NOMBRE": "asdasd"
 }

@@ -1,7 +1,9 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
+const dataAPriori = require("../../../mock-data.json");
 
 let countTags;
+const rowRandom = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
 
 //Add steps to versión 3.x
 // Generic Steps
@@ -348,9 +350,9 @@ When("I click last expand button", async function () {
   return await element.click();
 });
 
-When("I enter new lenguage identifier {kraken-string}", async function (siteTitle) {
+When("I enter new lenguage identifier", async function () {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
-  return await element.setValue(siteTitle);
+  return await element.setValue(dataAPriori[rowRandom].language);
 });
 
 Then("I get website language updated", async function () {

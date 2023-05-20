@@ -11,15 +11,15 @@ Scenario: Cambiar lenguaje del sitio web
   And I wait for 2 seconds
   And I click login
   And I wait for 2 seconds
-  Given I navigate to page "http://localhost:2368/ghost/#/settings/general"
+  Given I navigate to page "<URLGENERAL>"
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/2-change-language-v1"
   When I click last expand button
   And I take screenshot with name "ref-3.x/3-change-language-v1"
-  When I enter new lenguage identifier "es"
+  When I enter new lenguage identifier
   And I take screenshot with name "ref-3.x/4-change-language-v1"
   When I click save settings
   And I take screenshot with name "ref-3.x/5-change-language-v1"
-  Given I navigate to page "http://localhost:2368"
+  Given I navigate to page "<URLBASE>"
   And I take screenshot with name "ref-3.x/6-change-language-v1"
   Then I get website language updated
