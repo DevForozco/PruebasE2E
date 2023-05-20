@@ -4,9 +4,9 @@ Feature: Create New Tag
 Scenario: Creación de post
   Given I navigate to page "http://localhost:2370/ghost/#/signin"
   And I wait for 3 seconds
-  When I enter email v5 "j.vivast@uniandes.edu.co"
+  When I enter email v5 "<USERNAME>"
   And I wait for 1 seconds
-  And I enter password v5 "Duitama0420*"
+  And I enter password v5 "<PASSWORD>"
   And I take screenshot with name "test-5.x/1-create-tag-v2"
   And I wait for 2 seconds
   And I click login v5

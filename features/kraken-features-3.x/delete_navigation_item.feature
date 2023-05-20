@@ -2,10 +2,10 @@ Feature: Delete item from navigation
 
 @user1 @web
 Scenario: Eliminar un item de la navegacion
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<URL>"
   And I wait for 3 seconds
-  When I enter email "forozcob@uniandes.edu.co"
-  And I enter password "Pruebas123***"
+  When I enter email "<USERNAME>"
+  And I enter password "<PASSWORD>"
   And I take screenshot with name "ref-3.x/1-delete-item-navigation-v1"
   And I wait for 2 seconds
   And I click login

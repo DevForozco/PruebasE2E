@@ -4,8 +4,8 @@ Feature: Publish post
 Scenario: Login and publish post
   Given I navigate to page "http://localhost:2370/ghost/#/signin"
   And I wait for 2 seconds
-  When I enter email v5 "j.vivast@uniandes.edu.co"
-  When I enter password v5 "Duitama0420*"
+  When I enter email v5 "<USERNAME>"
+  When I enter password v5 "<PASSWORD>"
   And I wait for 2 seconds
   And I take screenshot with name "test-5.x/1-create-post-v2"
   When I click login v5

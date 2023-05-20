@@ -4,8 +4,8 @@ Feature: Edit a page
 Scenario: Login and edit page
   Given I navigate to page "http://localhost:3001/ghost/#/signin"
   And I wait for 2 seconds
-  When I enter email "j.aguiar@uniandes.edu.co"
-  When I enter password "prueba123+-"
+  When I enter email "<USERNAME>"
+  When I enter password "<PASSWORD>"
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/1-edit-page-v1"
   When I click login

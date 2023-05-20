@@ -2,10 +2,10 @@ Feature: Publish post
 
 @user1 @web
 Scenario: Login and publish post
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<URL>"
   And I wait for 2 seconds
   When I enter email "f.orozcob@uniandes.edu.co"
-  When I enter password "Pruebas123***"
+  When I enter password "<PASSWORD>"
   And I take screenshot with name "ref-3.x/1-create-post-v1"
   And I wait for 2 seconds
   When I click login

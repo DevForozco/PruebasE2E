@@ -1,11 +1,11 @@
 Feature: List posts
 
 @user1 @web
-Scenario: Login, publish & list posts 
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+Scenario: Login, publish & list posts
+  Given I navigate to page "<URL>"
   And I wait for 3 seconds
   When I enter email "f.orozcob@uniandes.edu.co"
-  When I enter password "Pruebas123***"
+  When I enter password "<PASSWORD>"
   And I wait for 3 seconds
   And I take screenshot with name "ref-3.x/1-list-post-v1"
   When I click login

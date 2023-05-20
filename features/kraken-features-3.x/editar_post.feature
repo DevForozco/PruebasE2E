@@ -2,10 +2,10 @@ Feature: Edit a post
 
 @user1 @web
 Scenario: Login and edit post
-  Given I navigate to page "http://localhost:2368/ghost/#/signin"
+  Given I navigate to page "<URL>"
   And I wait for 2 seconds
   When I enter email "f.orozcob@uniandes.edu.co"
-  When I enter password "Pruebas123***"
+  When I enter password "<PASSWORD>"
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/1-edit-post-v1"
   When I click login
