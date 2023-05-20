@@ -1,3 +1,4 @@
+
 Feature: Create internal New Tag
 
 @user1 @web
@@ -19,13 +20,13 @@ Scenario: Creación de post
   And I enter new tag
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/5-create-internal-tag-v1"
-  And I enter name tag "Tag de prueba"
+  And I enter name tag
   And I wait for 1 seconds
-  And I enter color tag "FF4000"
+  And I enter color tag
   And I wait for 2 seconds
-  And I enter slug tag "first-tag"
+  And I enter slug tag
   And I wait for 1 seconds
-  And I enter description tag "This is a description for my new tag"
+  And I enter description tag
   And I wait for 1 seconds
   And I click save tag
   And I wait for 3 seconds

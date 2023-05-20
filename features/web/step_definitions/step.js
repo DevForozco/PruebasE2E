@@ -148,24 +148,40 @@ When('I enter new tag', async function() {
   return await element.click();
 })
 
-When('I enter name tag {string}', async function (name) {
+When('I enter name tag', async function () {
   let element = await this.driver.$('#tag-name');
-  return await element.setValue(name);
+  return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-When('I enter color tag {string}', async function (color) {
+When('I enter name tag null', async function () {
+  let element = await this.driver.$('#tag-name');
+  return await element.setValue(dataAPriori[rowRandom].null);
+});
+
+When('I enter color tag', async function () {
   let element = await this.driver.$('.input-color > input:nth-child(1)');
-  return await element.setValue(color);
+  return await element.setValue(dataAPriori[rowRandom].color.split('#')[1]);
 });
 
-When('I enter slug tag {string}', async function (slug) {
+When('I enter invalid color tag', async function () {
+  let element = await this.driver.$('.input-color > input:nth-child(1)');
+  return await element.setValue(dataAPriori[rowRandom].color);
+});
+
+
+When('I enter slug tag', async function () {
   let element = await this.driver.$('#tag-slug');
-  return await element.setValue(slug);
+  return await element.setValue(dataAPriori[rowRandom].fullName);
 });
 
-When('I enter description tag {string}', async function (slug) {
+When('I enter description tag', async function () {
   let element = await this.driver.$('#tag-description');
-  return await element.setValue(slug);
+  return await element.setValue(dataAPriori[rowRandom].description100);
+});
+
+When('I enter description tag too long', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
 When('I click save tag', async function() {
@@ -176,7 +192,23 @@ When('I click save tag', async function() {
 Then('Evaluate the tag created', async function(){
   let tags = await this.driver.$$('.tags-list > *');
   expect(tags.length).to.greaterThan(0)
-})
+});
+
+Then('Evaluate message to name tag null', async function(){
+  let element = await this.driver.$('.response').getText();
+  expect(element).contains('You must specify a name for the tag');
+});
+
+Then('Evaluate message to invalid color', async function(){
+  let element = await this.driver.$('.error > p:nth-child(2)').getText();
+  expect(element).contains('The color should be in valid hex format');
+});
+
+Then('Evaluate message to description to long', async function(){
+  let element = await this.driver.$('.form-group.error.ember-view > p').getText();
+  expect(element).contains('Description cannot be longer than 500 characters');
+});
+
 
 //Delete tag
 When('I save the total tags', async function() {
