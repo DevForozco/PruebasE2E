@@ -3,14 +3,14 @@ const { expect } = require('chai');
 
 let countTags;
 
-//Add steps to versión 5.x
+//Add steps to versión 3.x
 // Generic Steps
-When('I enter email {string}', async function (email) {
+When('I enter email {kraken-string}', async function (email) {
   let element = await this.driver.$('#ember8');
   return await element.setValue(email);
 });
 
-When('I enter password {string}', async function (password) {
+When('I enter password {kraken-string}', async function (password) {
   let element = await this.driver.$('#ember10');
   return await element.setValue(password);
 });
@@ -180,7 +180,7 @@ When('I enter new internal tag', async function() {
   return await element.click();
 })
 
-//Edit staff 
+//Edit staff
 When('I enter link staff menu', async function() {
   let element = await this.driver.$('.gh-nav-list > li:nth-child(5)');
   return await element.click();
@@ -348,7 +348,7 @@ When("I click last expand button", async function () {
   return await element.click();
 });
 
-When("I enter new lenguage identifier {string}", async function (siteTitle) {
+When("I enter new lenguage identifier {kraken-string}", async function (siteTitle) {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
   return await element.setValue(siteTitle);
 });
@@ -400,12 +400,12 @@ Then("I get website description updated", async function () {
 //Add steps to versión 5.x
 
 // Generic Steps
-When('I enter email v5 {string}', async function (email) {
+When('I enter email v5 {kraken-string}', async function (email) {
   let element = await this.driver.$('#identification');
   return await element.setValue(email);
 });
 
-When('I enter password v5 {string}', async function (password) {
+When('I enter password v5 {kraken-string}', async function (password) {
   let element = await this.driver.$('#password');
   return await element.setValue(password);
 });

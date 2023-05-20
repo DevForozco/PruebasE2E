@@ -20,7 +20,7 @@ Before(async function() {
   this.deviceClient = new WebClient('chrome', {}, this.userId);
   this.driver = await this.deviceClient.startKrakenForUserId(this.userId);
   //deleteFolderRecursively('./comparativeReport/screenshots/test-5.x/');
-  //deleteFolderRecursively('./comparativeReport/screenshots/ref-3.x/');
+  deleteFolderRecursively('./comparativeReport/screenshots/ref-3.x/');
 })
 
 After(async function() {
