@@ -4,10 +4,8 @@ Feature: Change publication language
 Scenario: Cambiar lenguaje del sitio web
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
-  When I enter email v5 "<USERNAME>"
-  And I wait for 1 seconds
-  And I enter password v5 "<PASSWORD>"
-  And I wait for 2 seconds
+  When I enter email "<USERNAME>"
+  And I enter password "<PASSWORD>"
   And I take screenshot with name "test-5.x/1-change-language-v2"
   And I click login v5
   And I wait for 2 seconds

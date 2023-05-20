@@ -3,10 +3,9 @@ Feature: Edit a post
 @user1 @web
 Scenario: Login and edit post
   Given I navigate to page "<URLLOGIN>"
-  And I wait for 2 seconds
+  And I wait for 3 seconds
   When I enter email "<USERNAME>"
-  When I enter password "<PASSWORD>"
-  And I wait for 2 seconds
+  And I enter password "<PASSWORD>"
   And I take screenshot with name "ref-3.x/1-edit-post-v1"
   When I click login
   And I wait for 2 seconds

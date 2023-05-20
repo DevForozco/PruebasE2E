@@ -4,9 +4,8 @@ Feature: Create New Tag
 Scenario: Creación de post
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
-  When I enter email v5 "<USERNAME>"
-  And I wait for 1 seconds
-  And I enter password v5 "<PASSWORD>"
+  When I enter email "<USERNAME>"
+  And I enter password "<PASSWORD>"
   And I take screenshot with name "test-5.x/1-create-tag-v2"
   And I wait for 2 seconds
   And I click login v5

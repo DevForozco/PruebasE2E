@@ -3,10 +3,9 @@ Feature: Publish post
 @user1 @web
 Scenario: Login and publish post
   Given I navigate to page "<URLLOGIN>"
-  And I wait for 2 seconds
-  When I enter email v5 "<USERNAME>"
-  When I enter password v5 "<PASSWORD>"
-  And I wait for 2 seconds
+  And I wait for 3 seconds
+  When I enter email "<USERNAME>"
+  And I enter password "<PASSWORD>"
   And I take screenshot with name "test-5.x/1-create-post-v2"
   When I click login v5
   And I wait for 2 seconds

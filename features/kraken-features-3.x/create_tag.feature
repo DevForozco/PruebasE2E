@@ -5,7 +5,6 @@ Scenario: Creación de post
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
-  And I wait for 1 seconds
   And I enter password "<PASSWORD>"
   And I take screenshot with name "ref-3.x/1-create-tag-v1"
   And I wait for 2 seconds
