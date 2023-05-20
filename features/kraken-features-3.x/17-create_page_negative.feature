@@ -17,7 +17,7 @@ Scenario: new page con titulo invalido
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-create-new-page-v1"
   When I enter invalid title
-  When I enter positive content
+  When I enter valid content
   When I click publish
   And I take screenshot with name "ref-3.x/5-create-new-page-v1"
   And I wait for 2 seconds

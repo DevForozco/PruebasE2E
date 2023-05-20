@@ -1,7 +1,7 @@
 Feature: Publish post
 
 @user1 @web
-Scenario: Login and publish post
+Scenario: New post con datos correctos
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -17,8 +17,8 @@ Scenario: Login and publish post
   When I click new post
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/1-create-post-v1"
-  When I enter post positive title
-  When I enter post positive description
+  When I enter post valid title
+  When I enter post valid description
   And I take screenshot with name "ref-3.x/5-create-post-v1"
   When I click publish
   And I wait for 2 seconds
