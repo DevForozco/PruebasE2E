@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const dataAPriori = require("../../../mock-data.json");
 
@@ -353,9 +353,19 @@ When('I click update now', async function () {
 });
 
 Then('I get state page edited', async function() {
-  let element = await this.driver.$('fw4.midgrey-l2').getText();
-  expect(element).to.contain('Published')
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Updated')
 })
+
+Then('I get state page edited without title', async function() {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Cant Update')
+});
+
+Then('I get state page cant edit', async function(){
+  let element = await this.driver.$('.gh-alert-content').getText();
+  expect(element).to.contain('Update failed: Title cannot be longer than 255 characters.')
+});
 
 // Delete page
 When('I click a settings btn', async function() {

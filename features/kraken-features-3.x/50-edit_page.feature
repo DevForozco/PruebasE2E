@@ -1,7 +1,7 @@
 Feature: Edit a page
 
 @user1 @web
-Scenario: Edit page con datos invalidos en el titulo
+Scenario: Edit page con datos correctos
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -16,8 +16,8 @@ Scenario: Edit page con datos invalidos en el titulo
   When I click a page link
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-edit-page-v1"
-  When I enter invalid title
-  When I enter invalid content
+  When I enter valid title
+  When I enter valid content
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/5-edit-page-v1"
   When I click update
