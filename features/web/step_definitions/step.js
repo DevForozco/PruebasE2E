@@ -389,10 +389,37 @@ When("I enter new lenguage identifier", async function () {
   return await element.setValue(dataAPriori[rowRandom].language);
 });
 
+When("I enter new lenguage identifier null", async function () {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(dataAPriori[rowRandom].null);
+});
+
+When("I enter new lenguage identifier 1000 caracteres", async function () {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(dataAPriori[rowRandom].description1000);
+});
+
+When("I enter new lenguage identifier special characters", async function () {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+
 Then("I get website language updated", async function () {
   let element = await this.driver.$("html[lang='es']");
   expect(element).to.exist;
 });
+
+Then("I get text error by too long", async function(){
+  let element = await this.driver.$(".gh-alert-content").getText();
+  expect(element).contains("server error, cannot edit setting. ENAMETOOLONG: name too long");
+});
+
+Then("I get text error by failed", async function(){
+  let element = await this.driver.$(".gh-alert-content").getText();
+  expect(element).contains("Validation error, cannot edit setting. The request failed validation.");
+});
+
 
 // Delete item from navigation
 When("I click delete navigation item button", async function () {
