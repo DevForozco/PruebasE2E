@@ -1,4 +1,4 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const dataAPriori = require("../../../mock-data.json");
 
@@ -43,9 +43,19 @@ When('I enter post exceeds titulo', async function () {
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
+Then('I get state post cant edit', async function(){
+  let element = await this.driver.$('.gh-alert-content').getText();
+  expect(element).to.contain('Saving failed: Title cannot be longer than 255 characters.')
+});
+
 When('I enter post invalid title', async function () {
   let element = await this.driver.$(".gh-editor-title ");
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+When('I enter post without title', async function(){
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(' ');
 });
 
 When('I enter post valid description', async function () {
@@ -54,6 +64,11 @@ When('I enter post valid description', async function () {
 });
 
 When('I enter post empty description', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(' ');
+});
+
+When('I enter post without description', async function(){
   let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
   return await element.setValue(' ');
 });
@@ -385,9 +400,24 @@ When('I click update now', async function () {
 });
 
 Then('I get state page edited', async function() {
-  let element = await this.driver.$('fw4.midgrey-l2').getText();
-  expect(element).to.contain('Published')
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Updated')
 })
+
+Then('I get state page edited without title', async function() {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Cant Update')
+});
+
+Then('I get state page cant edit', async function(){
+  let element = await this.driver.$('.gh-alert-content').getText();
+  expect(element).to.contain('Update failed: Title cannot be longer than 255 characters.')
+});
+
+
+
+
+
 
 // Delete page
 When('I click a settings btn', async function() {

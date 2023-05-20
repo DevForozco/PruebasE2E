@@ -1,7 +1,7 @@
 Feature: Edit a page
 
 @user1 @web
-Scenario: Login and edit page
+Scenario: Edit page con datos invalidos en descripcion
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
@@ -16,8 +16,8 @@ Scenario: Login and edit page
   When I click a page link
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-edit-page-v1"
-  When I enter page title "Second title"
-  When I enter content page "Page edited"
+  When I enter valid title
+  When I enter invalid content
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/5-edit-page-v1"
   When I click update
