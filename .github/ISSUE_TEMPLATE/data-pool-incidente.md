@@ -15,6 +15,6 @@ assignees: ''
 ## Evidencias:
 * [_Pantallazo del error_]
 ## Contexto:
-> **Versión de la app:** <br>
+> **Versión de la app:** ghost 3.4<br>
 > **Sistema operativo:** MacOS Monterrey - Versión 12.6.3 <br>
 > **Browser:** Google Chrome - Versión 108.0.5359.94 (Build oficial) (arm64)
