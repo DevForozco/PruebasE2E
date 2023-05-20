@@ -2,7 +2,7 @@ Feature: Delete Tag
 
 @user1 @web
 Scenario: Creación de post
-  Given I navigate to page "<URL>"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
   And I wait for 1 seconds

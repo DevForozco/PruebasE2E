@@ -2,7 +2,7 @@ Feature: Publish post
 
 @user1 @web
 Scenario: Login and publish post
-  Given I navigate to page "http://localhost:2370/ghost/#/signin"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 2 seconds
   When I enter email v5 "<USERNAME>"
   When I enter password v5 "<PASSWORD>"
@@ -11,7 +11,7 @@ Scenario: Login and publish post
   When I click login v5
   And I wait for 2 seconds
   And I take screenshot with name "test-5.x/2-create-post-v2"
-  Given I navigate to page "http://localhost:2370/ghost/#/posts"
+  Given I navigate to page "<URLPOST>"
   And I wait for 2 seconds
   And I take screenshot with name "test-5.x/3-create-post-v2"
   When I click new post v5

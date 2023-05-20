@@ -2,7 +2,7 @@ Feature: Create New Tag
 
 @user1 @web
 Scenario: Creación de post
-  Given I navigate to page "http://localhost:2370/ghost/#/signin"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email v5 "<USERNAME>"
   And I wait for 1 seconds

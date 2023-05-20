@@ -2,7 +2,7 @@ Feature: Edit website title
 
 @user1 @web
 Scenario: Modificar título del website
-  Given I navigate to page "http://localhost:2370/ghost/#/signin"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email v5 "<USERNAME>"
   And I wait for 1 seconds
@@ -11,7 +11,7 @@ Scenario: Modificar título del website
   And I take screenshot with name "test-5.x/1-change-title-website-v2"
   And I click login v5
   And I wait for 2 seconds
-  Given I navigate to page "http://localhost:2370/ghost/#/settings/general"
+  Given I navigate to page "<URLGENERAL>"
   And I wait for 2 seconds
   And I take screenshot with name "test-5.x/2-change-title-website-v2"
   When I click expand button v5

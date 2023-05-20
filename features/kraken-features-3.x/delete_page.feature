@@ -2,7 +2,7 @@ Feature: Delete page
 
 @user1 @web
 Scenario: Login and delete page
-  Given I navigate to page "<URL>"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 2 seconds
   When I enter email "<USERNAME>"
   When I enter password "<PASSWORD>"

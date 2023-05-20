@@ -1,9 +1,14 @@
 {
     "USERNAME": "j.vivast@uniandes.edu.co",
     "PASSWORD": "Duitama0420*",
-    "URL": "http://localhost:2368/ghost/#/signin",
     "URLBASE": "http://localhost:2368",
+    "URLLOGIN": "http://localhost:2368/ghost/#/signin",
     "URLGENERAL": "http://localhost:2368/ghost/#/settings/general",
-
-    "NOMBRE": "asdasd"
+    "URLSETTINGS": "http://localhost:2368/ghost/#/settings/design",
+    "URLPOST": "http://localhost:2368/ghost/#/posts",
+    "URLPUBLISHED": "http://localhost:2368/ghost/#/posts?type=published",
+    "URLSCHEDULED": "http://localhost:2368/ghost/#/posts?type=schedule",
+    "URLDRAFT": "http://localhost:2368/ghost/#/posts?type=draft",
+    "URLNAVIGATION": "http://localhost:2368/ghost/#/settings/navigation",
+    "URLPAGES": "http://localhost:2368/ghost/#/pages"   
 }

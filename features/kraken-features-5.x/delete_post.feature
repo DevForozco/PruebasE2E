@@ -2,7 +2,7 @@ Feature: Unpublish post
 
 @user1 @web
 Scenario: Login and unpublish post
-  Given I navigate to page "http://localhost:2370/ghost/#/signin"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email v5 "<USERNAME>"
   When I enter password v5 "<PASSWORD>"
@@ -10,7 +10,7 @@ Scenario: Login and unpublish post
   And I take screenshot with name "test-5.x/1-unpublish-post-v2"
   When I click login v5
   And I wait for 3 seconds
-  Given I navigate to page "http://localhost:2370/ghost/#/posts"
+  Given I navigate to page "<URLPOST>"
   And I wait for 7 seconds
   And I take screenshot with name "test-5.x/2-unpublish-post-v2"
   When I click new post v5
@@ -28,7 +28,7 @@ Scenario: Login and unpublish post
   When I click publish now v5
   And I wait for 3 seconds
   And I take screenshot with name "test-5.x/7-unpublish-post-v2"
-  Given I navigate to page "http://localhost:2370/ghost/#/posts"
+  Given I navigate to page "<URLPOST>"
   And I wait for 3 seconds
   And I take screenshot with name "test-5.x/8-unpublish-post-v2"
   Given I click a post link v5

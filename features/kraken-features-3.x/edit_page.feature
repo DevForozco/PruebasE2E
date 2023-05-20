@@ -2,7 +2,7 @@ Feature: Edit a page
 
 @user1 @web
 Scenario: Login and edit page
-  Given I navigate to page "http://localhost:3001/ghost/#/signin"
+  Given I navigate to page "<URLLOGIN>"
   And I wait for 2 seconds
   When I enter email "<USERNAME>"
   When I enter password "<PASSWORD>"
