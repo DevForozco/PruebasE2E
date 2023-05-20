@@ -246,16 +246,50 @@ When('I click new page', async function () {
   return await element.click()
 });
 
-When('I enter page title {string}', async function (postTitle) {
+When('I enter positive title', async function () {
   let element = await this.driver.$('.gh-editor-title');
-  return await element.setValue(postTitle);
+  return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-When('I enter content new page {string}', async function (postDescription) {
+When('I enter positive content', async function () {
   let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
-  return await element.setValue(postDescription);
+  return await element.setValue(dataAPriori[rowRandom].description100);
 });
 
+When('I enter without title', async function () {
+  let element = await this.driver.$('.gh-editor-title');
+  return await element.setValue(' ');
+});
+
+When('I enter without content', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(' ');
+});
+
+When('I enter exceeds title', async function () {
+  let element = await this.driver.$('.gh-editor-title');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
+When('I enter invalid title', async function () {
+  let element = await this.driver.$('.gh-editor-title');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+When('I enter exceeds content', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
+When('I enter invalid content', async function () {
+  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+Then('I evaluate btn publish', async function(){
+  let element = await this.driver.$('.gh-publishmenu-trigger');
+  expect(element.isReactElement).equals(false)
+});
 
 Then('I get state new page', async function() {
   let element = await this.driver.$('fw4.midgrey-l2').getText();
