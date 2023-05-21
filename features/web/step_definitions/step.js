@@ -1,11 +1,9 @@
 const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
-const dataAPriori = require("../../../mock-data.json");
+const dataAPriori = require('../../../mock-data.json');
 const client = require('../../../client.js');
-
-let countTags;
 const rowRandom = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
-const urlMockaroo = "https://my.api.mockaroo.com/data_pool.json";
+const urlMockaroo = 'https://my.api.mockaroo.com/data_pool.json';
 
 var aleatorioDinamico = (callback) => client.getDataPool(urlMockaroo).then(async (result) => callback(result));
 
@@ -33,17 +31,17 @@ When('I click new post', async function () {
 });
 
 When('I enter post empty title', async function () {
-  let element = await this.driver.$(".gh-editor-title ");
+  let element = await this.driver.$('.gh-editor-title');
   return await element.setValue(' ');
 });
 
 When('I enter post valid title', async function () {
-  let element = await this.driver.$(".gh-editor-title ");
+  let element = await this.driver.$('.gh-editor-title');
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
 When('I enter post exceeds titulo', async function () {
-  let element = await this.driver.$(".gh-editor-title ");
+  let element = await this.driver.$('.gh-editor-title');
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
@@ -53,12 +51,12 @@ Then('I get state post cant edit', async function(){
 });
 
 When('I enter post invalid title', async function () {
-  let element = await this.driver.$(".gh-editor-title ");
+  let element = await this.driver.$('.gh-editor-title ');
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 When('I enter post without title', async function(){
-  let element = await this.driver.$(".gh-editor-title ");
+  let element = await this.driver.$('.gh-editor-title ');
   return await element.setValue(' ');
 });
 
@@ -92,8 +90,36 @@ When('I enter post description edition {string}', async function (postDescriptio
   return await element.setValue(postDescription);
 });
 
+When('I enter post dinamic title', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.gh-editor-title');
+    return await element.setValue(data.title);
+  });
+});
+
+When('I enter post dinamic exceeds title', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.gh-editor-title');
+    return await element.setValue(data.description256);
+  }).catch((value) => console.error(value));
+});
+
+When('I enter post dinamic caracters title', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.gh-editor-title');
+    return await element.setValue(data.caracteresEspeciales);
+  }).catch((value) => console.error(value));
+});
+
+When('I enter post dinamic description', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+    return await element.setValue(data.title);
+  }).catch((value) => console.error(value));
+});
+
 When('I click publish', async function () {
-  let element = await this.driver.$('.gh-publishmenu-trigger');
+  let element = await this.driver.$('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger');
   return await element.click()
 });
 
@@ -127,31 +153,30 @@ When('I click a schedule ratio btn', async function(){
   return await element.click()
 });
 
-Then("I get title post succesfully", async function () {
-  let element = await this.driver.$(".gh-notification-title").getText();
-  expect(element).to.contain("Published");
+Then('I get title post succesfully', async function () {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Published');
 });
 
-Then("I get title post deleted succesfully", async function () {
-  let element = await this.driver.$(".gh-notification-title").getText();
-  expect(element).to.contain("Saved");
+Then('I get title post deleted succesfully', async function () {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Saved');
 });
 
-Then("I get title post updated succesfully", async function () {
-  let element = await this.driver.$(".gh-notification-title").getText();
-  expect(element).to.contain("Updated");
+Then('I get title post updated succesfully', async function () {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Updated');
 });
 
-Then("I see at least one post", async function () {
-  let element = await this.driver.$(".gh-list-row.gh-posts-list-item");
+Then('I see at least one post', async function () {
+  let element = await this.driver.$('.gh-list-row.gh-posts-list-item');
   expect(element).to.exist;
 });
 
-Then("I get title post scheduled succesfully", async function () {
-  let element = await this.driver.$(".gh-notification-title").getText();
-  expect(element).to.contain("Scheduled");
+Then('I get title post scheduled succesfully', async function () {
+  let element = await this.driver.$('.gh-notification-title').getText();
+  expect(element).to.contain('Scheduled');
 });
-
 
 //New Tag Step
 
@@ -247,7 +272,6 @@ Then('Evaluate message to name tag too long', async function(){
   expect(element).contains('Tag names cannot be longer than 191 characters.');
 });
 
-
 //Delete tag
 When('I save the total tags', async function() {
   let tags = await this.driver.$$('.tags-list > li');
@@ -278,7 +302,7 @@ Then('Evaluate the tag deleted', async function(){
 //Edit tag
 When('I clic edit save tag', async function() {
   let element = await this.driver.$('.tags-list > li > a > h3');
-  console.log("ELEMENTS", element);
+  console.log('ELEMENTS', element);
 })
 
 //New Internal Tag
@@ -363,7 +387,7 @@ When('I enter email owner {string}', async function (name) {
 
 Then('I validate error button save', async function() {
   let element = await this.driver.$('.gh-btn.gh-btn-blue').getText();
-  expect(element).to.equals("Retry");
+  expect(element).to.equals('Retry');
 })
 
 // New post draft
@@ -479,31 +503,26 @@ Then('I get state page cant edit', async function(){
   expect(element).to.contain('Update failed: Title cannot be longer than 255 characters.')
 });
 
-
-
-
-
-
 // Delete page
 When('I click a settings btn', async function() {
   let element = await this.driver.$('.post-settings');
   return await element.click();
 })
 
-When("I click a delete btn", async function () {
-  let element = await this.driver.$(".settings-menu-delete-button");
+When('I click a delete btn', async function () {
+  let element = await this.driver.$('.settings-menu-delete-button');
   return await element.click();
 });
 
-When("I confirm delete btn", async function () {
+When('I confirm delete btn', async function () {
   let element = await this.driver.$(
-    ".gh-btn.gh-btn-red.gh-btn-icon.ember-view"
+    '.gh-btn.gh-btn-red.gh-btn-icon.ember-view'
   );
   return await element.click();
 });
 
-Then("I see no pages text", async function () {
-  let element = await this.driver.$(".no-posts-box");
+Then('I see no pages text', async function () {
+  let element = await this.driver.$('.no-posts-box');
   expect(element).to.exist;
 });
 
@@ -514,103 +533,133 @@ Then('I see the pages', async function() {
 })
 
 // Change site title
-When("I click expand button", async function () {
+When('I click expand button', async function () {
   let element = await this.driver.$(
-    ".gh-setting-first .gh-setting-action .gh-btn"
+    '.gh-setting-first .gh-setting-action .gh-btn'
   );
   return await element.click();
 });
 
-When("I enter site title {string}", async function (siteTitle) {
-  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+When('I enter site title {string}', async function (siteTitle) {
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
   return await element.setValue(siteTitle);
 });
 
-When("I click save settings", async function () {
+When('I click save settings', async function () {
   let element = await this.driver.$(
-    ".gh-btn.gh-btn-blue.gh-btn-icon.ember-view"
+    '.gh-btn.gh-btn-blue.gh-btn-icon.ember-view'
   );
   return await element.click();
 });
 
-Then("I get website title updated", async function () {
-  let element = await this.driver.$(".gh-nav-menu-details-blog").getText();
-  expect(element).to.contain("New site title");
+Then('I get website title updated', async function () {
+  let element = await this.driver.$('.gh-nav-menu-details-blog').getText();
+  expect(element).to.contain('New site title');
 });
 
 // Change website language
-When("I click last expand button", async function () {
+When('I click last expand button', async function () {
   let element = await this.driver.$(
-    ".gh-setting-last .gh-setting-action .gh-btn"
+    '.gh-setting-last .gh-setting-action .gh-btn'
   );
   return await element.click();
 });
 
-When("I enter new lenguage identifier", async function () {
-  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+When('I enter new lenguage identifier', async function () {
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
   return await element.setValue(dataAPriori[rowRandom].language);
 });
 
-When("I enter new lenguage identifier null", async function () {
-  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+When('I enter new lenguage identifier null', async function () {
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
   return await element.setValue(dataAPriori[rowRandom].null);
 });
 
-When("I enter new lenguage identifier 1000 caracteres", async function () {
-  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+When('I enter new lenguage identifier 1000 caracteres', async function () {
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
   return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
-When("I enter new lenguage identifier special characters", async function () {
-  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+When('I enter new lenguage identifier special characters', async function () {
+  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
-
-Then("I get website language updated", async function () {
-  let element = await this.driver.$("html[lang='es']");
+Then('I get website language updated', async function () {
+  let element = await this.driver.$('html[lang="es"]');
   expect(element).to.exist;
 });
 
-Then("I get text error by too long", async function(){
-  let element = await this.driver.$(".gh-alert-content").getText();
-  expect(element).contains("server error, cannot edit setting. ENAMETOOLONG: name too long");
+Then('I get text error by too long', async function(){
+  let element = await this.driver.$('.gh-alert-content').getText();
+  expect(element).contains('server error, cannot edit setting. ENAMETOOLONG: name too long');
 });
 
-Then("I get text error by failed", async function(){
-  let element = await this.driver.$(".gh-alert-content").getText();
-  expect(element).contains("Validation error, cannot edit setting. The request failed validation.");
+Then('I get text error by failed', async function(){
+  let element = await this.driver.$('.gh-alert-content').getText();
+  expect(element).contains('Validation error, cannot edit setting. The request failed validation.');
 });
-
 
 // Delete item from navigation
-When("I click delete navigation item button", async function () {
-  let element = await this.driver.$(".gh-blognav-delete");
+When('I click delete navigation item button', async function () {
+  let element = await this.driver.$('.gh-blognav-delete');
   return await element.click();
 });
 
-Then("I get item navigation deleted", async function () {
+Then('I get item navigation deleted', async function () {
   let items = await this.driver.$$(
-    ".gh-blognav-item.gh-blognav-item--sortable.ember-view"
+    '.gh-blognav-item.gh-blognav-item--sortable.ember-view'
   );
   expect(items.length).to.lessThan(4);
 });
 
 // Edit item from navigation
-When("I change nav item text {string}", async function (newLabel) {
+When("I change nav item text", async function () {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
-  return await element.setValue(newLabel);
+  return await element.setValue(dataAPriori[rowRandom].title);
 });
 
-Then("I get nav item updated", async function () {
-  let element = await this.driver.$(".nav-index");
+When("I change nav item url", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].title);
+});
+
+When("I leave empty nav item text", async function () {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue("");
+});
+
+When("I change nav item url to have 1000 characters", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].description1000);
+});
+
+When("I change nav item url to have special characters", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+Then("I cant update nav item", async function () {
+  let element = await this.driver.$(".retry_svg__retry-animated");
   expect(element).to.exist;
 });
 
+Then('I get nav item updated', async function () {
+  let element = await this.driver.$('.nav-index');
+  expect(element).to.exist;
+});
+
+Then("I get nav item url restored", async function () {
+  let element = await this.driver
+    .$(".gh-blognav-url.ember-view > input")
+    .getText();
+  expect(element).to.contain("");
+});
+
 // Edit website description
-When("I enter site description {string}", async function (siteDescription) {
+When('I enter site description {string}', async function (siteDescription) {
   let element = await this.driver.$(
-    ".description-container .ember-text-field.gh-input.ember-view"
+    '.description-container .ember-text-field.gh-input.ember-view'
   );
   return await element.setValue(siteDescription);
 });
@@ -672,7 +721,7 @@ When('I click login v5', async function () {
   return await element.click()
 });
 
-When("I take screenshot with name {string}", async function (screenName) {
+When('I take screenshot with name {string}', async function (screenName) {
   return await this.driver.saveScreenshot(`./comparativeReport/screenshots/${screenName}.png`);
 });
 
@@ -726,51 +775,81 @@ Then('I get post deleted text', async function() {
 })
 
 //Change language v5
-When("I click last expand button v5", async function () {
+When('I click last expand button v5', async function () {
   let element = await this.driver.$(
-    ".gh-expandable > div:nth-child(3) > div:nth-child(1) > button"
+    '.gh-expandable > div:nth-child(3) > div:nth-child(1) > button'
   );
   return await element.click();
 });
 
-When("I click save settings v5", async function () {
+When('I click save settings v5', async function () {
   let element = await this.driver.$(
-    ".view-actions > button"
+    '.view-actions > button'
   );
   return await element.click();
 });
 
 //Change language v5
-When("I click expand button v5", async function () {
+When('I click expand button v5', async function () {
   let element = await this.driver.$(
-    ".gh-expandable > div:nth-child(1) > div:nth-child(1) > button"
+    '.gh-expandable > div:nth-child(1) > div:nth-child(1) > button'
   );
   return await element.click();
 });
 
-Then("I get website title updated v5", async function () {
-  let element = await this.driver.$(".gh-nav-menu-details-sitetitle").getText();
-  expect(element).to.contain("New site title");
+Then('I get website title updated v5', async function () {
+  let element = await this.driver.$('.gh-nav-menu-details-sitetitle').getText();
+  expect(element).to.contain('New site title');
 });
 
 // Delete item from navigation v5
-Then("I get item navigation deleted v5", async function () {
-  let items = await this.driver.$$(".gh-main-section-content > .gh-blognav-delete");
+Then('I get item navigation deleted v5', async function () {
+  let items = await this.driver.$$('.gh-main-section-content > .gh-blognav-delete');
   expect(items.length).to.lessThan(2);
 });
 
 // Create new page v5
-When("I click a settings btn v5", async function () {
-  let element = await this.driver.$(".settings-menu-toggle");
+When('I click a settings btn v5', async function () {
+  let element = await this.driver.$('.settings-menu-toggle');
   return await element.click();
 });
 
-When("I click a delete btn v5", async function () {
-  let element = await this.driver.$(".settings-menu-delete-button");
+When('I click a delete btn v5', async function () {
+  let element = await this.driver.$('.settings-menu-delete-button');
   return await element.click();
 });
 
-Then("I get page deleted", async function () {
-  let items = await this.driver.$$(".gh-post-list-cta.edit");
+Then('I get page deleted', async function () {
+  let items = await this.driver.$$('.gh-post-list-cta.edit');
   expect(items.length).to.lessThan(2);
+});
+
+// Create a draft
+When("I click posts back button", async function () {
+  let element = await this.driver.$(".blue.link.fw4.flex.items-center.ember-view");
+  return await element.click();
+});
+
+When("I enter post long title", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].description1000);
+});
+
+When("I enter post title with special characters", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+Then("I see draft post in the posts list", async function () {
+  let items = await this.driver.$$(
+    ".gh-content-status-draft.gh-badge.gh-badge-purple.nowrap"
+  );
+  expect(items.length).to.exist;
+});
+
+Then("I don't see draft post in the posts list", async function () {
+  let items = await this.driver.$$(
+    ".gh-content-status-draft.gh-badge.gh-badge-purple.nowrap"
+  );
+  expect(items.length).to.lessThan(1);
 });
