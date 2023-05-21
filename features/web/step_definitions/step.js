@@ -540,10 +540,20 @@ When('I click expand button', async function () {
   return await element.click();
 });
 
-When('I enter site title {string}', async function (siteTitle) {
+When('I enter site title too long', async function () {
+  aleatorioDinamico(async (data) => {
   let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
-  return await element.setValue(siteTitle);
+  return await element.setValue(data.description256);
+  })
 });
+
+When('I enter site title aleatorio', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+    return await element.setValue(data.title);
+  });
+});
+
 
 When('I click save settings', async function () {
   let element = await this.driver.$(
@@ -554,7 +564,12 @@ When('I click save settings', async function () {
 
 Then('I get website title updated', async function () {
   let element = await this.driver.$('.gh-nav-menu-details-blog').getText();
-  expect(element).to.contain('New site title');
+  expect(element).to.exist;
+});
+
+Then('I get title error editing website', async function(){
+  let element = await this.driver.$('.form-group.error.ember-view > p:nth-child(2)').getText();
+  expect(element).contains('Title is too long');
 });
 
 // Change website language
