@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require('playwright');
 const { nodes, user } = require('../../utils/utils');
+const { pageObject } = require('../../pageObject');
 
 //Función flecha asíncrona
 (async () => {
@@ -19,12 +20,12 @@ const { nodes, user } = require('../../utils/utils');
     await new Promise(r => setTimeout(r, 7000));
 
     // Ingresar usuario y password
-    await page.fill('#ember8', user.mail);
-    await page.fill('#ember10', user.password);
+    await page.fill(pageObject.login.mailImput, user.mail);
+    await page.fill(pageObject.login.pssImput, user.password);
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
-    await page.click('#ember12')
+    await page.click(pageObject.login.loginBtn)
     await new Promise(r => setTimeout(r, 9000));
     console.log('Dashboard loaded')
 
@@ -42,7 +43,7 @@ const { nodes, user } = require('../../utils/utils');
     console.log(`Clicked new page. URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
     await page.type('.gh-editor-title.ember-text-area.gh-input.ember-view', 'Página editada');
-    await page.type('.koenig-editor__editor.__mobiledoc-editor', 'Contenido de l página editada');
+    await page.type(pageObject.post.descriptionImput, 'Contenido de l página editada');
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger')
     await new Promise(r => setTimeout(r, 9000));

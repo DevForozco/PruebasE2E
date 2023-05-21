@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require('playwright');
 const { nodes, user } = require('../../utils/utils');
+const { pageObject } = require('../../pageObject');
 
 //Función flecha asíncrona
 (async () => {
@@ -17,13 +18,13 @@ const { nodes, user } = require('../../utils/utils');
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(nodes.urlSignin)
     await new Promise(r => setTimeout(r, 2000));
-    await page.fill('#ember8', user.mail);
-    await page.fill('#ember10', user.password);
+    await page.fill(pageObject.login.mailImput, user.mail);
+    await page.fill(pageObject.login.pssImput, user.password);
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_tag_1.png'})
-    await page.click('#ember12')
+    await page.click(pageObject.login.loginBtn)
     await new Promise(r => setTimeout(r, 9000));
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_tag_2.png'})
 
@@ -35,7 +36,7 @@ const { nodes, user } = require('../../utils/utils');
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_tag_4.png'});
 
     await new Promise(r => setTimeout(r, 3000));
-    await page.fill('#tag-name', 'Tag de prueba');
+    await page.fill(pageObject.tag.nameImput, 'Tag de prueba');
     await page.fill('.input-color > input:nth-child(1)', 'FF4000');
     await page.fill('#tag-slug', 'first-tag');
     await page.fill('#tag-description', 'This is a description for my new tag');

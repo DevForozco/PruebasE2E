@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require("playwright");
 const { nodes, user } = require('../../utils/utils');
+const { pageObject } = require('../../pageObject');
 
 //Función flecha asíncrona
 (async () => {
@@ -24,9 +25,9 @@ const { nodes, user } = require('../../utils/utils');
     await page.goto(nodes.urlSignin);
     await new Promise((r) => setTimeout(r, 2000));
     // Ingresar usuario y password
-    await page.fill('#ember8', user.mail);
-    await page.fill('#ember10', user.password);
-    await page.click("#ember12");
+    await page.fill(pageObject.login.mailImput, user.mail);
+    await page.fill(pageObject.login.pssImput, user.password);
+    await page.click(pageObject.login.loginBtn);
     await new Promise((r) => setTimeout(r, 2000));
     console.log("Login completed");
     // Ir a la vista de Diseño

@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require('playwright');
 const { nodes, user } = require('../../utils/utils');
+const { pageObject } = require('../../pageObject');
 
 //Función flecha asíncrona
 (async () => {
@@ -17,12 +18,12 @@ const { nodes, user } = require('../../utils/utils');
     //Abrir la URL a probar en la página y cargar el login
   	await page.goto(nodes.urlSignin)
 	  await new Promise(r => setTimeout(r, 2000));
-    await page.fill('#ember8', user.mail);
-    await page.fill('#ember10', user.password);
+    await page.fill(pageObject.login.mailImput, user.mail);
+    await page.fill(pageObject.login.pssImput, user.password);
 
     // Clic en el botón Sing in
     await new Promise(r => setTimeout(r, 7000));
-    await page.click('#ember12')
+    await page.click(pageObject.login.loginBtn)
     await new Promise(r => setTimeout(r, 9000));
     console.log('Dashboard loaded')
 
@@ -35,14 +36,14 @@ const { nodes, user } = require('../../utils/utils');
     console.log('Pages loaded')
 
     // Crear nueva página
-    await page.click('.ember-view.gh-btn.gh-btn-green')
+    await page.click(pageObject.post.newPostBtn)
     await new Promise(r => setTimeout(r, 5000));
     console.log(`Clicked new page. URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 9000));
 
     // Ingresar título, contenido y crear la página
     await page.type('.gh-editor-title.ember-text-area.gh-input.ember-view', 'Primer página');
-    await page.type('.koenig-editor__editor.__mobiledoc-editor', 'Contenido primer página');
+    await page.type(pageObject.post.descriptionImput, 'Contenido primer página');
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger')
     await new Promise(r => setTimeout(r, 9000));
