@@ -7,6 +7,8 @@ let countTags;
 const rowRandom = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
 const urlMockaroo = "https://my.api.mockaroo.com/data_pool.json";
 
+var aleatorioDinamico = (callback) => client.getDataPool(urlMockaroo).then(async (result) => callback(result));
+
 //Add steps to versión 3.x
 // Generic Steps
 When('I enter email {kraken-string}', async function (email) {
@@ -312,13 +314,10 @@ When('I enter name owner null', async function () {
 });
 
 When('I enter name owner aleatorio', async function () {
-  client.getDataPool(urlMockaroo)
-  .then(async (data) => {
-    console.log("data", data.email);
+  aleatorioDinamico(async (data) => {
     let element = await this.driver.$('#user-name');
     return await element.setValue(data.email);
-  });
-
+  })
 });
 
 When('I enter email owner null', async function () {
