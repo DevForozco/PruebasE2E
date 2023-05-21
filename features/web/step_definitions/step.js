@@ -895,3 +895,20 @@ When("I enter a random password", async function () {
   let element = await this.driver.$("#ember10");
   return await element.setValue(dataAPriori[rowRandom].fullName);
 });
+
+//Nav item aleatorio
+When("I change nav item text randomly", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.title);
+  });
+});
+
+When("I change nav item url randomly", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+    return await element.setValue(data.fullName);
+  });
+});
