@@ -615,11 +615,43 @@ When("I enter site description {string}", async function (siteDescription) {
   return await element.setValue(siteDescription);
 });
 
+When("I enter site description aleatorio", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".description-container .ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.title);
+  });
+});
+
+When("I enter site description too long aleatorio", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".description-container .ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.description256);
+  });
+});
+
+When("I enter site description especial aleatorio", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".description-container .ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.caracteresEspeciales);
+  });
+});
+
 Then("I get website description updated", async function () {
   let element = await this.driver.$("meta[name='description']");
   let element2 = await this.driver.$("meta[content='New site description']");
   expect(element).to.exist;
   expect(element2).to.exist;
+});
+
+Then("I get error website description too long", async function () {
+  let element = await this.driver.$(".description-container.form-group.error.ember-view > p:nth-child(2)").getText();
+  expect(element).contains('Description is too long');
 });
 
 //Add steps to versión 5.x
