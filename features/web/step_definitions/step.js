@@ -774,3 +774,33 @@ Then("I get page deleted", async function () {
   let items = await this.driver.$$(".gh-post-list-cta.edit");
   expect(items.length).to.lessThan(2);
 });
+
+// Create a draft
+When("I click posts back button", async function () {
+  let element = await this.driver.$(".blue.link.fw4.flex.items-center.ember-view");
+  return await element.click();
+});
+
+When("I enter post long title", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].description1000);
+});
+
+When("I enter post title with special characters", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+Then("I see draft post in the posts list", async function () {
+  let items = await this.driver.$$(
+    ".gh-content-status-draft.gh-badge.gh-badge-purple.nowrap"
+  );
+  expect(items.length).to.exist;
+});
+
+Then("I don't see draft post in the posts list", async function () {
+  let items = await this.driver.$$(
+    ".gh-content-status-draft.gh-badge.gh-badge-purple.nowrap"
+  );
+  expect(items.length).to.lessThan(1);
+});

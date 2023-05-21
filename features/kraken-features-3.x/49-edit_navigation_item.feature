@@ -13,7 +13,7 @@ Scenario: Modificar un item de la navegación
   Given I navigate to page "<URLSETTINGS>"
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/3-edit-item-navigation-v1"
-  When I change nav item url to have 1000 characters
+  When I change nav item url to have special characters
   When I click save settings
   And I wait for 1 seconds
   And I take screenshot with name "ref-3.x/4-edit-item-navigation-v1"
