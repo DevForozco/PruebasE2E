@@ -16,7 +16,7 @@ Scenario: Creación de post
   And I clic edit owner
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-edit-name-staff-v1"
-  And I enter name owner "Name Test"
+  And I enter name owner
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/5-edit-name-staff-v1"
   And I save edit owner

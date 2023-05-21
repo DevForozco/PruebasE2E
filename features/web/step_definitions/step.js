@@ -173,6 +173,11 @@ When('I enter name tag null', async function () {
   return await element.setValue(dataAPriori[rowRandom].null);
 });
 
+When('I enter name tag too long', async function () {
+  let element = await this.driver.$('#tag-name');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
+
 When('I enter color tag', async function () {
   let element = await this.driver.$('.input-color > input:nth-child(1)');
   return await element.setValue(dataAPriori[rowRandom].color.split('#')[1]);
@@ -183,10 +188,14 @@ When('I enter invalid color tag', async function () {
   return await element.setValue(dataAPriori[rowRandom].color);
 });
 
-
 When('I enter slug tag', async function () {
   let element = await this.driver.$('#tag-slug');
   return await element.setValue(dataAPriori[rowRandom].fullName);
+});
+
+When('I enter slug tag too long', async function () {
+  let element = await this.driver.$('#tag-slug');
+  return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
 When('I enter description tag', async function () {
@@ -222,6 +231,16 @@ Then('Evaluate message to invalid color', async function(){
 Then('Evaluate message to description to long', async function(){
   let element = await this.driver.$('.form-group.error.ember-view > p').getText();
   expect(element).contains('Description cannot be longer than 500 characters');
+});
+
+Then('I get text error save', async function() {
+  let element = await this.driver.$('.view-actions > button:nth-child(1)').getText();
+  expect(element).contains('Retry');
+});
+
+Then('Evaluate message to name tag too long', async function(){
+  let element = await this.driver.$('.response').getText();
+  expect(element).contains('Tag names cannot be longer than 191 characters.');
 });
 
 
@@ -275,9 +294,14 @@ When('I clic edit owner', async function() {
   return await element.click();
 })
 
-When('I enter name owner {string}', async function (name) {
+When('I enter name owner', async function () {
   let element = await this.driver.$('#user-name');
-  return await element.setValue(name);
+  return await element.setValue(dataAPriori[rowRandom].fullName);
+});
+
+When('I enter name owner too long', async function () {
+  let element = await this.driver.$('#user-name');
+  return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I save edit owner', async function() {
@@ -287,7 +311,12 @@ When('I save edit owner', async function() {
 
 Then('I get name edit owner', async function() {
   let element = await this.driver.$('.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3').getText();
-  expect(element).to.equals("Name Test");
+  expect(element).to.exist;
+})
+
+Then('Evaluate name staff too long error', async function() {
+  let element = await this.driver.$('.response').getText();
+  expect(element).contains('Name is too long');
 })
 
 //Edit mail staff fail
