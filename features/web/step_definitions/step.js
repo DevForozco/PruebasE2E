@@ -887,21 +887,23 @@ Then("I can't see publish button", async function () {
 
 //Login aleatorio
 When("I enter a random email", async function () {
-  let element = await this.driver.$("#ember8");
-  return await element.setValue(dataAPriori[rowRandom].email);
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$("#ember8");
+    return await element.setValue(data.language);
+  });
 });
 
 When("I enter a random password", async function () {
-  let element = await this.driver.$("#ember10");
-  return await element.setValue(dataAPriori[rowRandom].fullName);
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$("#ember10");
+    return await element.setValue(data.location);
+  });
 });
 
 //Nav item aleatorio
 When("I change nav item text randomly", async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$(
-      ".ember-text-field.gh-input.ember-view"
-    );
+    let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
     return await element.setValue(data.title);
   });
 });
@@ -917,4 +919,11 @@ When("I change nav item url randomly", async function () {
 Then("I dont see the pages", async function () {
   let tags = await this.driver.$$(".gh-list > *");
   expect(tags.length).to.lessThanOrEqual(1);
+});
+
+When("I enter name owner randomly", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$("#user-name");
+    return await element.setValue(data.paragraph);
+  });
 });
