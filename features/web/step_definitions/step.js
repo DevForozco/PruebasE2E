@@ -1,9 +1,11 @@
 const { When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const dataAPriori = require("../../../mock-data.json");
+const client = require('../../../client.js');
 
 let countTags;
 const rowRandom = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
+const urlMockaroo = "https://my.api.mockaroo.com/data_pool.json";
 
 //Add steps to versión 3.x
 // Generic Steps
@@ -304,20 +306,55 @@ When('I enter name owner too long', async function () {
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
+When('I enter name owner null', async function () {
+  let element = await this.driver.$('#user-name');
+  return await element.setValue(' ');
+});
+
+When('I enter name owner aleatorio', async function () {
+  client.getDataPool(urlMockaroo)
+  .then(async (data) => {
+    console.log("data", data.email);
+    let element = await this.driver.$('#user-name');
+    return await element.setValue(data.email);
+  });
+
+});
+
+When('I enter email owner null', async function () {
+  let element = await this.driver.$('#user-email');
+  return await element.setValue(' ');
+});
+
+When('I click off page', async function(){
+  let element = await this.driver.$('.user-image.bg-whitegrey');
+  return await element.click();
+})
+
 When('I save edit owner', async function() {
   let element = await this.driver.$('.gh-btn.gh-btn-blue');
   return await element.click();
-})
+});
 
 Then('I get name edit owner', async function() {
   let element = await this.driver.$('.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3').getText();
   expect(element).to.exist;
-})
+});
 
 Then('Evaluate name staff too long error', async function() {
   let element = await this.driver.$('.response').getText();
   expect(element).contains('Name is too long');
-})
+});
+
+Then('Evaluate name staff null error', async function() {
+  let element = await this.driver.$('.response').getText();
+  expect(element).contains('Please enter a name.');
+});
+
+Then('Evaluate email staff null error', async function() {
+  let element = await this.driver.$('.form-group.error.ember-view > p:nth-child(3)').getText();
+  expect(element).contains('Please supply a valid email address');
+});
 
 //Edit mail staff fail
 When('I enter email owner {string}', async function (name) {
