@@ -1,6 +1,7 @@
 //Importar Playwright
 const playwright = require('playwright');
 const { nodes, user } = require('../../utils/utils');
+const { pageObject } = require('../../pageObject');
 
 //Función flecha asíncrona
 (async () => {
@@ -16,12 +17,12 @@ const { nodes, user } = require('../../utils/utils');
 
   	await page.goto(nodes.urlSignin)
 	await new Promise(r => setTimeout(r, 2000));
-    await page.fill('#ember8', user.mail);
-    await page.fill('#ember10', user.password);
+    await page.fill(pageObject.login.mailImput, user.mail);
+    await page.fill(pageObject.login.pssImput, user.password);
   	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_01.png'})
 
   	//When I click login
-  	await page.click('#ember12')
+  	await page.click(pageObject.login.loginBtn)
 	await new Promise(r => setTimeout(r, 2000));
   	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_02.png'})
 
@@ -30,14 +31,14 @@ const { nodes, user } = require('../../utils/utils');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_03.png'})
 
   	//When I click new post
-  	await page.click('.ember-view.gh-btn.gh-btn-green')
+  	await page.click(pageObject.post.newPostBtn)
 	await new Promise(r => setTimeout(r, 2000));
-  	await page.fill('.gh-editor-title', 'post title');
-  	await page.fill('.koenig-editor__editor.__mobiledoc-editor', 'This is a description');
+  	await page.fill(pageObject.post.titleImput, 'post title');
+  	await page.fill(pageObject.post.descriptionImput, 'This is a description');
   	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_04.png'})
 
   	//When I click publish
-  	await page.click('.gh-publishmenu-trigger')
+  	await page.click(pageObject.post.publishBtn)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_05.png'})
 

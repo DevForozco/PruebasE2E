@@ -4,127 +4,128 @@ const dataAPriori = require('../../../mock-data.json');
 const client = require('../../../client.js');
 const rowRandom = Math.floor((Math.random() * (999 - 1 + 1)) + 1);
 const urlMockaroo = 'https://my.api.mockaroo.com/data_pool.json';
+const { pageObject } = require('../../../pageObject');
 
 var aleatorioDinamico = (callback) => client.getDataPool(urlMockaroo).then(async (result) => callback(result));
 
 //Add steps to versión 3.x
 // Generic Steps
 When('I enter email {kraken-string}', async function (email) {
-  let element = await this.driver.$('#ember8');
+  let element = await this.driver.$(pageObject.login.mailImput);
   return await element.setValue(email);
 });
 
 When('I enter password {kraken-string}', async function (password) {
-  let element = await this.driver.$('#ember10');
+  let element = await this.driver.$(pageObject.login.pssImput);
   return await element.setValue(password);
 });
 
 When('I click login', async function () {
-  let element = await this.driver.$('#ember12');
+  let element = await this.driver.$(pageObject.login.loginBtn);
   return await element.click()
 });
 
 // New publication step
 When('I click new post', async function () {
-  let element = await this.driver.$('.ember-view.gh-btn.gh-btn-green');
+  let element = await this.driver.$(pageObject.post.newPostBtn);
   return await element.click()
 });
 
 When('I enter post empty title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(' ');
 });
 
 When('I enter post valid title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
 When('I enter post exceeds titulo', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 Then('I get state post cant edit', async function(){
-  let element = await this.driver.$('.gh-alert-content').getText();
+  let element = await this.driver.$(pageObject.post.informationAlert).getText();
   expect(element).to.contain('Saving failed: Title cannot be longer than 255 characters.')
 });
 
 When('I enter post invalid title', async function () {
-  let element = await this.driver.$('.gh-editor-title ');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 When('I enter post without title', async function(){
-  let element = await this.driver.$('.gh-editor-title ');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(' ');
 });
 
 When('I enter post valid description', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter post empty description', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(' ');
 });
 
 When('I enter post without description', async function(){
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(' ');
 });
 
 When('I enter post exceeds description', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter post invalid description', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 When('I enter post description edition {string}', async function (postDescription) {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(postDescription);
 });
 
 When('I enter post dinamic title', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('.gh-editor-title');
+    let element = await this.driver.$(pageObject.post.titleImput);
     return await element.setValue(data.title);
   });
 });
 
 When('I enter post dinamic exceeds title', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('.gh-editor-title');
+    let element = await this.driver.$(pageObject.post.titleImput);
     return await element.setValue(data.description256);
   }).catch((value) => console.error(value));
 });
 
 When('I enter post dinamic caracters title', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('.gh-editor-title');
+    let element = await this.driver.$(pageObject.post.titleImput);
     return await element.setValue(data.caracteresEspeciales);
   }).catch((value) => console.error(value));
 });
 
 When('I enter post dinamic description', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+    let element = await this.driver.$(pageObject.post.descriptionImput);
     return await element.setValue(data.title);
   }).catch((value) => console.error(value));
 });
 
 When('I click publish', async function () {
-  let element = await this.driver.$('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger');
+  let element = await this.driver.$(pageObject.post.publishBtn);
   return await element.click()
 });
 
 When('I validate publish btn', async function () {
-  let element = await this.driver.$('.gh-publishmenu-trigger');
+  let element = await this.driver.$(pageObject.post.publishBtn);
   expect(element.isReactElement).equals(false)
 });
 
@@ -181,29 +182,29 @@ Then('I get title post scheduled succesfully', async function () {
 //New Tag Step
 
 When('I enter link tag menu', async function() {
-  let element = await this.driver.$('.gh-nav-list > li:nth-child(4)');
+  let element = await this.driver.$(pageObject.tag.linkMenu);
   let tags = await this.driver.$$('.tags-list > *');
   this.countTags = tags.length;
   return await element.click();
 })
 
 When('I enter new tag', async function() {
-  let element = await this.driver.$('.view-actions > a:nth-child(2)');
+  let element = await this.driver.$(pageObject.tag.newTagBtn);
   return await element.click();
 })
 
 When('I enter name tag', async function () {
-  let element = await this.driver.$('#tag-name');
+  let element = await this.driver.$(pageObject.tag.nameImput);
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
 When('I enter name tag null', async function () {
-  let element = await this.driver.$('#tag-name');
+  let element = await this.driver.$(pageObject.tag.nameImput);
   return await element.setValue(dataAPriori[rowRandom].null);
 });
 
 When('I enter name tag too long', async function () {
-  let element = await this.driver.$('#tag-name');
+  let element = await this.driver.$(pageObject.tag.nameImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
@@ -413,52 +414,52 @@ When('I enter link pages menu', async function() {
 })
 
 When('I click new page', async function () {
-  let element = await this.driver.$('.ember-view.gh-btn.gh-btn-green');
+  let element = await this.driver.$(pageObject.post.newPostBtn);
   return await element.click()
 });
 
 When('I enter valid title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
 When('I enter valid content', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].description100);
 });
 
 When('I enter without title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(' ');
 });
 
 When('I enter without content', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(' ');
 });
 
 When('I enter exceeds title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter invalid title', async function () {
-  let element = await this.driver.$('.gh-editor-title');
+  let element = await this.driver.$(pageObject.post.titleImput);
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 When('I enter exceeds content', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter invalid content', async function () {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
 Then('I evaluate btn publish', async function(){
-  let element = await this.driver.$('.gh-publishmenu-trigger');
+  let element = await this.driver.$(pageObject.post.publishBtn);
   expect(element.isReactElement).equals(false)
 });
 
@@ -474,12 +475,12 @@ When('I click a page link', async function () {
 });
 
 When('I enter content page {string}', async function (postDescription) {
-  let element = await this.driver.$('.koenig-editor__editor.__mobiledoc-editor');
+  let element = await this.driver.$(pageObject.post.descriptionImput);
   return await element.setValue(postDescription);
 });
 
 When('I click update', async function () {
-  let element = await this.driver.$('.gh-publishmenu-trigger');
+  let element = await this.driver.$(pageObject.post.publishBtn);
   return await element.click()
 });
 
@@ -499,7 +500,7 @@ Then('I get state page edited without title', async function() {
 });
 
 Then('I get state page cant edit', async function(){
-  let element = await this.driver.$('.gh-alert-content').getText();
+  let element = await this.driver.$(pageObject.post.informationAlert).getText();
   expect(element).to.contain('Update failed: Title cannot be longer than 255 characters.')
 });
 
@@ -606,12 +607,12 @@ Then('I get website language updated', async function () {
 });
 
 Then('I get text error by too long', async function(){
-  let element = await this.driver.$('.gh-alert-content').getText();
+  let element = await this.driver.$(pageObject.post.informationAlert).getText();
   expect(element).contains('server error, cannot edit setting. ENAMETOOLONG: name too long');
 });
 
 Then('I get text error by failed', async function(){
-  let element = await this.driver.$('.gh-alert-content').getText();
+  let element = await this.driver.$(pageObject.post.informationAlert).getText();
   expect(element).contains('Validation error, cannot edit setting. The request failed validation.');
 });
 
