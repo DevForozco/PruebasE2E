@@ -912,3 +912,9 @@ When("I change nav item url randomly", async function () {
     return await element.setValue(data.fullName);
   });
 });
+
+//Listar páginas
+Then("I dont see the pages", async function () {
+  let tags = await this.driver.$$(".gh-list > *");
+  expect(tags.length).to.lessThanOrEqual(1);
+});
