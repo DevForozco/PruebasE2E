@@ -1,7 +1,7 @@
 Feature: Schedule post
 
 @user1 @web
-Scenario: Schedule page con datos correctos
+Scenario: Schedule page con los campos obligatorios vacios
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"
