@@ -14,7 +14,8 @@ Scenario: Modificar título del website
   And I take screenshot with name "ref-3.x/2-change-title-website-v1"
   When I click expand button
   And I take screenshot with name "ref-3.x/3-change-title-website-v1"
-  When I enter site title "New site title"
+  When I enter site title aleatorio
+  And I wait for 5 seconds
   And I take screenshot with name "ref-3.x/4-change-title-website-v1"
   When I click save settings
   And I take screenshot with name "ref-3.x/5-change-title-website-v1"
