@@ -555,6 +555,12 @@ When('I enter site title aleatorio', async function () {
   });
 });
 
+When('I enter site title especial character', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+    return await element.setValue(data.caracteresEspeciales);
+  });
+});
 
 When('I click save settings', async function () {
   let element = await this.driver.$(
