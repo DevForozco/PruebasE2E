@@ -1,7 +1,7 @@
 Feature: Schedule post
 
 @user1 @web
-Scenario: Login and schedule post
+Scenario: Schedule page con fechas invalidas
   Given I navigate to page "<URLLOGIN>"
   And I wait for 3 seconds
   When I enter email "<USERNAME>"

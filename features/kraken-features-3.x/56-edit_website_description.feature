@@ -14,11 +14,11 @@ Scenario: Modificar descripción del sitio web
   And I take screenshot with name "ref-3.x/2-edit-description-v1"
   When I click expand button
   And I take screenshot with name "ref-3.x/3-edit-description-v1"
-  When I enter site description "New site description"
+  When I enter site description aleatorio
   And I take screenshot with name "ref-3.x/4-edit-description-v1"
   When I click save settings
   And I take screenshot with name "ref-3.x/5-edit-description-v1"
   And I wait for 2 seconds
-  Given I navigate to page "<URLBASE>/"
+  Given I navigate to page "<URLBASE>"
   And I take screenshot with name "ref-3.x/6-edit-description-v1"
   Then I get website description updated
