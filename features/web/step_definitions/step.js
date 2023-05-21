@@ -883,3 +883,14 @@ Then("I can't see publish button", async function () {
   );
   expect(items).to.not.contain('publish');
 });
+
+//Login aleatorio
+When("I enter a random email", async function () {
+  let element = await this.driver.$("#ember8");
+  return await element.setValue(dataAPriori[rowRandom].email);
+});
+
+When("I enter a random password", async function () {
+  let element = await this.driver.$("#ember10");
+  return await element.setValue(dataAPriori[rowRandom].fullName);
+});
