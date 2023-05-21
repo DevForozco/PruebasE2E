@@ -597,14 +597,46 @@ Then("I get item navigation deleted", async function () {
 });
 
 // Edit item from navigation
-When("I change nav item text {string}", async function (newLabel) {
+When("I change nav item text", async function () {
   let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
-  return await element.setValue(newLabel);
+  return await element.setValue(dataAPriori[rowRandom].title);
+});
+
+When("I change nav item url", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].title);
+});
+
+When("I leave empty nav item text", async function () {
+  let element = await this.driver.$(".ember-text-field.gh-input.ember-view");
+  return await element.setValue("");
+});
+
+When("I change nav item url to have 1000 characters", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].description1000);
+});
+
+When("I change nav item url to have special characters", async function () {
+  let element = await this.driver.$(".gh-blognav-url.ember-view > input");
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+Then("I cant update nav item", async function () {
+  let element = await this.driver.$(".retry_svg__retry-animated");
+  expect(element).to.exist;
 });
 
 Then("I get nav item updated", async function () {
   let element = await this.driver.$(".nav-index");
   expect(element).to.exist;
+});
+
+Then("I get nav item url restored", async function () {
+  let element = await this.driver
+    .$(".gh-blognav-url.ember-view > input")
+    .getText();
+  expect(element).to.contain("");
 });
 
 // Edit website description
