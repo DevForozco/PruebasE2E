@@ -868,3 +868,18 @@ Then("I don't see draft post in the posts list", async function () {
   );
   expect(items.length).to.lessThan(1);
 });
+
+//Delete page
+When("I click publish blue button", async function () {
+  let element = await this.driver.$(
+    ".gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view"
+  );
+  return await element.click();
+});
+
+Then("I can't see publish button", async function () {
+  let items = await this.driver.$$(
+    ".ember-view ember-basic-dropdown-trigger.gh-btn gh-btn-outline.gh-publishmenu-trigger"
+  );
+  expect(items).to.not.contain('publish');
+});
