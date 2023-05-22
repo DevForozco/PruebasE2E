@@ -230,6 +230,16 @@ When('I enter name tag', async function () {
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
+When('I enter name tag numeric', async function () {
+  let element = await this.driver.$(pageObject.tag.nameImput);
+  return await element.setValue(dataAPriori[rowRandom].number10);
+});
+
+When('I enter name tag character especial', async function () {
+  let element = await this.driver.$(pageObject.tag.nameImput);
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 When('I enter name tag null', async function () {
   let element = await this.driver.$(pageObject.tag.nameImput);
   return await element.setValue(dataAPriori[rowRandom].null);
@@ -260,10 +270,31 @@ When('I enter slug tag too long', async function () {
   return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
+When('I enter slug tag numeric', async function () {
+  let element = await this.driver.$('#tag-slug');
+  return await element.setValue(dataAPriori[rowRandom].number10);
+});
+
+When('I enter slug tag character especial', async function () {
+  let element = await this.driver.$('#tag-slug');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 When('I enter description tag', async function () {
   let element = await this.driver.$('#tag-description');
   return await element.setValue(dataAPriori[rowRandom].description100);
 });
+
+When('I enter description tag numeric', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(dataAPriori[rowRandom].number20);
+});
+
+When('I enter description tag character especial', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 
 When('I enter description tag too long', async function () {
   let element = await this.driver.$('#tag-description');
