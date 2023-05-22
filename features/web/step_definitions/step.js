@@ -158,7 +158,7 @@ When('I validate publish btn', async function () {
 });
 
 When('I click publish now', async function () {
-  let element = await this.driver.$(pageObject.tag.publishNowBtn);
+  let element = await this.driver.$(pageObject.post.publishNowBtn);
   return await element.click()
 });
 
@@ -590,6 +590,13 @@ When('I enter site title especial character', async function () {
   });
 });
 
+When('I enter site title number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.page.titleImput);
+    return await element.setValue(data.number10);
+  });
+});
+
 When('I click save settings', async function () {
   let element = await this.driver.$(pageObject.settings.saveBtn);
   return await element.click();
@@ -716,6 +723,15 @@ When("I enter site description aleatorio", async function () {
       ".description-container .ember-text-field.gh-input.ember-view"
     );
     return await element.setValue(data.title);
+  });
+});
+
+When("I enter site description number", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".description-container .ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.number10);
   });
 });
 
