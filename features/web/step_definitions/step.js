@@ -395,7 +395,12 @@ When('I enter link staff menu', async function() {
 When('I clic edit owner', async function() {
   let element = await this.driver.$(pageObject.staff.ownerBtn);
   return await element.click();
-})
+});
+
+When('I enter bio owner too long', async function () {
+  let element = await this.driver.$('.ember-text-area.gh-input.ember-view');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
 
 When('I enter name owner', async function () {
   let element = await this.driver.$(pageObject.staff.nameImput);
@@ -453,6 +458,11 @@ Then('Evaluate email staff null error', async function() {
   let element = await this.driver.$(pageObject.staff.errorMessage).getText();
   expect(element).contains('Please supply a valid email address');
 });
+
+Then('Evaluate bio too long', async function(){
+  let element = await this.driver.$('.bio-container.form-group.error.ember-view').getText();
+  expect(element).contains('Bio is too long');
+})
 
 //Edit mail staff fail
 When('I enter email owner {string}', async function (name) {

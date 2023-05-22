@@ -25,6 +25,7 @@ exports.pageObject = {
     linkMenu: '.gh-nav-list > li:nth-child(4)',
     newTagBtn: '.view-actions > a:nth-child(2)',
     nameImput: '#tag-name',
+    bioImput: '.ember-text-area.gh-input.ember-view',
     tagList: '.tags-list > *',
     tagListLi: '.tags-list > li',
     tagListTitle: '.tags-list > li > a > h3',
