@@ -6,9 +6,10 @@ const { pageObject } = require('../../pageObject');
 //Función flecha asíncrona
 (async () => {
   //Definir los navegadores en los que se quiere hacer la prueba
-  for (const browserType of ['chromium']){//, 'firefox', 'webkit']) {
+  for (const browserType of ["chromium"]) {
+    //, 'firefox', 'webkit']) {
     //Contenido de la prueba
-    console.log(browserType+'-------------------------------------------')
+    console.log(browserType + "-------------------------------------------");
 
     //Creación del objeto browser, el contexto del mismo y el objeto page para manejar la página
     const browser = await playwright[browserType].launch();
@@ -17,35 +18,50 @@ const { pageObject } = require('../../pageObject');
 
     //Abrir la URL a probar en la página y cargar el login
     await page.goto(Const.utlSignIn);
-    await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_0.png'})
+    await new Promise((r) => setTimeout(r, 7000));
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_0.png",
+    });
 
     // Ingresar usuario y password
     await page.fill(pageObject.login.mailImput, user.mail);
     await page.fill(pageObject.login.pssImput, user.password);
 
     // Clic en el botón Sing in
-    await new Promise(r => setTimeout(r, 7000));
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_1.png'})
-    await page.click(pageObject.login.loginBtn)
-    await new Promise(r => setTimeout(r, 5000));
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_2.png'});
+    await new Promise((r) => setTimeout(r, 7000));
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_1.png",
+    });
+    await page.click(pageObject.login.loginBtn);
+    await new Promise((r) => setTimeout(r, 5000));
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_2.png",
+    });
 
-    await new Promise(r => setTimeout(r, 3000));
-    await page.click('.gh-nav-list > li:nth-child(5)');
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_3.png'});
+    await new Promise((r) => setTimeout(r, 3000));
+    await page.click(".gh-nav-list > li:nth-child(5)");
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_3.png",
+    });
 
-    await new Promise(r => setTimeout(r, 3000));
-    await page.click('.apps-grid > div:nth-child(3) > a');
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_4.png'});
+    await new Promise((r) => setTimeout(r, 3000));
+    await page.click(".apps-grid > div:nth-child(3) > a");
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_4.png",
+    });
 
-    await new Promise(r => setTimeout(r, 3000));
-    await page.fill('#user-email', ' ');
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_5.png'});
+    await new Promise((r) => setTimeout(r, 3000));
+    await page.fill("#user-email", " ");
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_5.png",
+    });
 
-    await new Promise(r => setTimeout(r, 3000));
-    await page.click('.gh-btn.gh-btn-blue');
-    await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_email_staff_6.png'});
+    await new Promise((r) => setTimeout(r, 3000));
+    await page.click(".gh-btn.gh-btn-blue");
+    await page.screenshot({
+      path: "comparativeReport/screenshots/ref-3.3/edit_email_staff_6.png",
+    });
+    expect(".gh-btn.gh-btn-blue").equal("Retry");
 
     //Finalizar la prueba
     await browser.close();

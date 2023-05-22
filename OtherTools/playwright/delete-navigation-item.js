@@ -49,6 +49,10 @@ const { pageObject } = require('../../pageObject');
       path: "comparativeReport/screenshots/ref-3.3/ghostHomeNavItemDeleted.png",
     });
     console.log("Navigation item delete test completed"); //Finalizar la prueba
+
+    expect(".gh-blognav-item.gh-blognav-item--sortable.ember-view")
+      .length()
+      .lessThan(4);
     await browser.close();
   }
   return;
