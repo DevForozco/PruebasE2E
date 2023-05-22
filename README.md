@@ -88,6 +88,9 @@ Cada vez que se ejecuta un paso, se realiza la petición al mock api y se obtien
 Luego se crea en el archivo **step.js** una promesa para invocar al servicio y obtener la respuesta
 ![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/80eb1cf3-ca4c-4ded-a64b-11e6c7c951b4)
 
+Luego esta función se usa en cada uno de los steps que sean necesarios así como se muestra a continuación
+![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/8af0cc4c-9611-4ecb-ab1c-119cb5fbd319)
+
 
 # Configuraciones necesarias para ejecutar las pruebas con Playwright
 
