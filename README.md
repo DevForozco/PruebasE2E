@@ -12,7 +12,7 @@ Artefactos de pruenas E2E para funcionalidades de Ghost
 | Ghost          | Descripción              |
 | ------------------- | ------------------- |
 | V3.41.1       |  Usado para para probar y generar evidencias en carpeta /ref-3.x  |
-| V5.1.1       |  Usado para para probar y generar evidencias en carpeta /test-5.x  |__
+| latest       |  Usado para para probar y generar evidencias en carpeta /test-5.x  |__
 
 ## Estandares de nombramiento
 Las imagenes generadas por el Resemble.js tendran la siguiente estructura
