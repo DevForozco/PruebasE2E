@@ -62,12 +62,13 @@ ___
 
 # Configuraciones necesarias para ejecutar las pruebas con Kraken
 
+* Tener instalada la versión 12.22.1 de Node js
 * Ejecutar npm install
-* En el archivo **main.feature** es necesario pegar el código del escenario que se desea ejecutar, cada uno de estos escenarios están en la carpeta **kraken-features**
+* En el archivo **main.feature** es necesario pegar el código del escenario que se desea ejecutar, cada uno de estos escenarios están en la carpeta **features/kraken-features-3.x**
 
-* Para ejecutar las pruebas con kraken, es necesario ajustar la url por la cual está corriendo Ghost, el usuario y la contraseña del usuario creado para iniciar sesión. Esto debe realizarse en cada uno de los 20 archivos con extensión .feature así como se evidencia a continuación.
+* Para ejecutar las pruebas con kraken, es necesario ajustar el puerto por el cual está corriendo Ghost en cada una de las urls, el usuario y la contraseña del usuario creado para iniciar sesión. Esto debe realizarse en el archivo **properties.json** .feature así como se evidencia a continuación.
 
-<img width="731" alt="Captura de Pantalla 2023-05-07 a la(s) 8 34 34 p m" src="https://user-images.githubusercontent.com/124003160/236715536-8a01183e-3326-4519-a536-6f5a7b9c9c79.png">
+![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/7eeb0d93-275d-4deb-84a8-9bdbd2890987)
 
 # Configuraciones necesarias para ejecutar las pruebas con Playwright
 
