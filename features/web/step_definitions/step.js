@@ -98,10 +98,24 @@ When('I enter post dinamic title', async function () {
   });
 });
 
+When('I enter post especial characters dinamic title', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.caracteresEspeciales);
+  });
+});
+
 When('I enter post dinamic title too long', async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(pageObject.post.titleImput);
     return await element.setValue(data.description256);
+  });
+});
+
+When('I enter post dinamic title number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.number10);
   });
 });
 
@@ -123,6 +137,13 @@ When('I enter post dinamic description', async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(pageObject.post.descriptionImput);
     return await element.setValue(data.title);
+  }).catch((value) => console.error(value));
+});
+
+When('I enter post dinamic description number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.descriptionImput);
+    return await element.setValue(data.number500);
   }).catch((value) => console.error(value));
 });
 
