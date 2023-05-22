@@ -29,7 +29,7 @@ const { pageObject } = require('../../pageObject');
 
 
     // Abrir menú Pages
-    await page.click('.gh-nav-list > li:nth-child(3)')
+    await page.click(pageObject.page.newPageBtn)
     await new Promise(r => setTimeout(r, 9000));
     console.log(`Clicked "Pages". URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
@@ -47,7 +47,7 @@ const { pageObject } = require('../../pageObject');
     await new Promise(r => setTimeout(r, 9000));
     await page.click('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger')
     await new Promise(r => setTimeout(r, 9000));
-    await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view')
+    await page.click(pageObject.post.publishMenu)
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/NewPage.png'})
     console.log('Page created')
 

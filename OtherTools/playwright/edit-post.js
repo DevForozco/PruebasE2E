@@ -43,7 +43,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_post_05.png'})
 
 	//When I click publish now
-	await page.click('.gh-publishmenu-button')
+	await page.click(pageObject.post.publishNowBtn)
 	await new Promise(r => setTimeout(r, 2000))
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_post_06.png'})
 
@@ -52,7 +52,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_post_07.png'})
 
 	//When I click a post link
-	await page.click('.gh-list-row.gh-posts-list-item:last-child')
+	await page.click(pageObject.post.postLink)
 	await new Promise(r => setTimeout(r, 2000))
 	await page.fill(pageObject.post.titleImput, 'Second title')
 	await page.fill(pageObject.post.descriptionImput, 'This is a edition')
@@ -64,7 +64,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_post_09.png'})
 
 	//When I click publish now
-	await page.click('.gh-publishmenu-button')
+	await page.click(pageObject.post.publishNowBtn)
 	await new Promise(r => setTimeout(r, 2000))
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_post_10.png'})
 

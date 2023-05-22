@@ -46,7 +46,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_06.png'})
 
 	//When I click publish now
-	await page.click('.gh-publishmenu-button');
+	await page.click(pageObject.post.publishNowBtn);
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_07.png'})
 
@@ -55,7 +55,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_08.png'})
 
 	//Given I click a post link
-	await page.click('.gh-list-row.gh-posts-list-item:last-child');
+	await page.click(pageObject.post.postLink);
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_09.png'})
 
@@ -65,12 +65,12 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_10.png'})
 
 	//When I click a unpublish ratio btn
-	await page.click('.gh-publishmenu-radio-button:first-child');
+	await page.click(pageObject.post.unpublishRadioBtn);
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_11.png'})
 
 	//When I click a publish btn
-	await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
+	await page.click(pageObject.post.publishMenu);
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_post_12.png'})
 
