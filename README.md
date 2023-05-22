@@ -62,7 +62,7 @@ ___
 
 # Configuraciones necesarias para ejecutar las pruebas con Kraken
 
-* Tener instalada la versión 12.22.1 de Node js
+* Tener instalada la versión 12.22.1 de Node js para ejecutar las pruebas de **features/kraken-features-3.x** o tener la versión de node 16.13.0 o superior para ejecutar las pruebas de **features/kraken-features-5.x**
 * Ejecutar el comando **npm install** en la raiz del proyecto para descargar las dependencias necesarias
 * En el archivo **main.feature** es necesario pegar el código del escenario que se desea ejecutar, cada uno de estos escenarios están en la carpeta **features/kraken-features-3.x**
 
@@ -71,6 +71,23 @@ ___
 ![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/7eeb0d93-275d-4deb-84a8-9bdbd2890987)
 
 * Luego de realizar la configuración mencionada anteriormente, se debe ejecutar el siguiente comando para correr la prueba **npx kraken-node run**
+
+# Descripción de la configuración de los data pool para los escenarios de pruebas
+
+* (i) pool de datos a-priori: Para esta estrategia se realizó la creación de un json con el set de datos necesarios, el cual se encuentra cargado en el código fuente de la aplicación y se importa en el archivo de steps.js 
+
+![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/2998131d-9fa6-42bd-9fe8-86f782025bae)
+
+* (ii) pool de datos (pseudo) aleatorio dinámico y (iii) escenario aleatorio: Para esta estrategia, realizamos la configuración de un mock api utilizando la herramienta **https://www.mockaroo.com/** el mock api puede consultarse a tráves de la siguiente fuente "curl -H "X-API-Key: 380bc950" https://my.api.mockaroo.com/data_pool.json"
+
+Cada vez que se ejecuta un paso, se realiza la petición al mock api y se obtiene el dato en tiempo real, la configuración necesaria en el código se realizó de la siguiente manera:
+* Se crea el cliente para invocar el api, esto se realiza en el archivo **client.js**
+
+![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/6e72256b-34f5-4575-9f0e-058ad5d9bd89)
+
+Luego se crea en el archivo **step.js** una promesa para invocar al servicio y obtener la respuesta
+![image](https://github.com/DevForozco/PruebasE2E/assets/124003160/80eb1cf3-ca4c-4ded-a64b-11e6c7c951b4)
+
 
 # Configuraciones necesarias para ejecutar las pruebas con Playwright
 
