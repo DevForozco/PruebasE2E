@@ -16,8 +16,10 @@ Scenario: Schedule page con los campos obligatorios vacios
   When I click new post
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-schedule-post-v1"
-  When I enter post dinamic title
   When I enter post dinamic description
+  And I wait for 2 seconds
+  When I enter post dinamic title too long
+  And I wait for 5 seconds
   And I take screenshot with name "ref-3.x/5-schedule-post-v1"
   When I click publish
   And I wait for 2 seconds
@@ -28,4 +30,4 @@ Scenario: Schedule page con los campos obligatorios vacios
   When I click a publish btn
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/8-schedule-post-v1"
-  Then I get title post scheduled succesfully
+  Then I get title post error too long
