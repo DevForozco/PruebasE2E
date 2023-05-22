@@ -797,37 +797,37 @@ When('I enter link tag menu v5', async function() {
 
 // New publication step
 When('I click new post v5', async function () {
-  let element = await this.driver.$('.view-actions-top-row > a:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.actionsRow);
   return await element.click()
 });
 
 When('I click publish v5', async function () {
-  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.publicacion.itemsBtn);
   return await element.click()
 });
 
 When('I click publish now v5', async function () {
-  let element = await this.driver.$('.gh-publish-cta > button:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.publishBtn);
   return await element.click()
 });
 
 Then('I get post succesfully text', async function() {
-  let element = await this.driver.$('.gh-publish-cta > button > span').getText();
+  let element = await this.driver.$(pageObject.publicacion.publishCtaBtn).getText();
   expect(element).to.contain('Publish post, right now')
 })
 
 When('I click a unpublish ratio btn v5', async function () {
-  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.publicacion.itemsBtn);
   return await element.click()
 });
 
 When('I click a publish btn v5', async function(){
-  let element = await this.driver.$('.gh-revert-to-draft');
+  let element = await this.driver.$(pageObject.publicacion.revertDraft);
   return await element.click()
 });
 
 When('I click a post link v5', async function () {
-  let element = await this.driver.$('.posts-list.gh-list > div:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.postLists);
   return await element.click()
 });
 
@@ -838,9 +838,7 @@ Then('I get post deleted text', async function() {
 
 //Change language v5
 When('I click last expand button v5', async function () {
-  let element = await this.driver.$(
-    '.gh-expandable > div:nth-child(3) > div:nth-child(1) > button'
-  );
+  let element = await this.driver.$('.gh-expandable > div:nth-child(3) > div:nth-child(1) > button');
   return await element.click();
 });
 
@@ -853,9 +851,7 @@ When('I click save settings v5', async function () {
 
 //Change language v5
 When('I click expand button v5', async function () {
-  let element = await this.driver.$(
-    '.gh-expandable > div:nth-child(1) > div:nth-child(1) > button'
-  );
+  let element = await this.driver.$('.gh-expandable > div:nth-child(1) > div:nth-child(1) > button');
   return await element.click();
 });
 
