@@ -43,7 +43,7 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_05.png'})
 
   	//When I click publish now
-  	await page.click('.gh-publishmenu-button')
+  	await page.click(pageObject.post.publishNowBtn)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/create_post_06.png'})
 

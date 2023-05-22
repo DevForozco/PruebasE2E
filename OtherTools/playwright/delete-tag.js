@@ -40,7 +40,7 @@ const { pageObject } = require('../../pageObject');
 
     await new Promise(r => setTimeout(r, 3000));
     await page.fill(pageObject.tag.nameImput, 'Tag de prueba');
-    await page.fill('.input-color > input:nth-child(1)', 'FF4000');
+    await page.fill(pageObject.tag.colorImput, 'FF4000');
     await page.fill('#tag-slug', 'first-tag');
     await page.fill('#tag-description', 'This is a description for my new tag');
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/delete_tag_5.png'});

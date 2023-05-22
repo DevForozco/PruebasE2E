@@ -32,23 +32,23 @@ const { pageObject } = require('../../pageObject');
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_2.png'});
 
     await new Promise(r => setTimeout(r, 3000));
-    await page.click('.gh-nav-list > li:nth-child(5)');
+    await page.click(pageObject.staff.staffMenu);
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_3.png'});
 
     await new Promise(r => setTimeout(r, 3000));
-    await page.click('.apps-grid > div:nth-child(3) > a');
+    await page.click(pageObject.staff.ownerBtn);
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_4.png'});
 
     await new Promise(r => setTimeout(r, 3000));
-    await page.fill('#user-name', 'Name Test');
+    await page.fill(pageObject.staff.nameImput, 'Name Test');
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_5.png'});
 
     await new Promise(r => setTimeout(r, 2000));
-    await page.click('.gh-btn.gh-btn-blue');
+    await page.click(pageObject.staff.saveBtn);
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_6.png'});
 
     await new Promise(r => setTimeout(r, 3000));
-    await page.click('.gh-nav-list > li:nth-child(5)');
+    await page.click(pageObject.staff.staffMenu);
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/edit_staff_7.png'});
 
     //Finalizar la prueba

@@ -31,7 +31,7 @@ const { pageObject } = require('../../pageObject');
 
 
     // Abrir menú Pages
-    await page.click('.gh-nav-list > li:nth-child(3)')
+    await page.click(pageObject.page.newPageBtn)
     await new Promise(r => setTimeout(r, 9000));
     console.log(`Clicked "Pages". URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
@@ -42,11 +42,11 @@ const { pageObject } = require('../../pageObject');
     await new Promise(r => setTimeout(r, 5000));
     console.log(`Clicked new page. URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));
-    await page.click('.post-settings')
+    await page.click(pageObject.page.postSettingsBtn)
     await new Promise(r => setTimeout(r, 5000));
     await page.click('.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button')
     await new Promise(r => setTimeout(r, 5000));
-    await page.click('.gh-btn.gh-btn-red.gh-btn-icon.ember-view')
+    await page.click(pageObject.page.deleteConfirmBtn)
     await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/PageDeleted.png'})
     console.log('Page deleted')
 
