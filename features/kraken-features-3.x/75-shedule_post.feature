@@ -16,8 +16,8 @@ Scenario: Schedule page con fechas invalidas
   When I click new post
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-schedule-post-v1"
-  When I enter post title "post title"
-  When I enter post description edition "This is a description"
+  When I enter post title with special characters
+  When I enter post description edition character especial
   And I take screenshot with name "ref-3.x/5-schedule-post-v1"
   When I click publish
   And I wait for 2 seconds

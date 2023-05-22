@@ -91,6 +91,17 @@ When('I enter post description edition {string}', async function (postDescriptio
   return await element.setValue(postDescription);
 });
 
+When('I enter post description edition numeric', async function () {
+  let element = await this.driver.$(pageObject.post.descriptionImput);
+  return await element.setValue(dataAPriori[rowRandom].number50);
+});
+
+When('I enter post description edition character especial', async function () {
+  let element = await this.driver.$(pageObject.post.descriptionImput);
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+
 When('I enter post dinamic title', async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(pageObject.post.titleImput);
@@ -927,6 +938,11 @@ When("I enter post long title", async function () {
 When("I enter post title with special characters", async function () {
   let element = await this.driver.$(".gh-editor-title ");
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+When("I enter post title with numbers", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].number20);
 });
 
 Then("I see draft post in the posts list", async function () {
