@@ -64,5 +64,13 @@ exports.pageObject = {
     saveBtn: '.gh-btn.gh-btn-blue.gh-btn-icon.ember-view',
     detailsMenu: '.gh-nav-menu-details-blog',
     errorMessage: '.form-group.error.ember-view > p:nth-child(2)'
+  },
+  publicacion: {
+    actionsRow: '.view-actions-top-row > a:nth-child(1)',
+    itemsBtn: '.flex.items-center > button:nth-child(2)',
+    publishBtn: '.gh-publish-cta > button:nth-child(1)',
+    publishCtaBtn: '.gh-publish-cta > button > span',
+    revertDraft: '.gh-revert-to-draft',
+    postLists: '.posts-list.gh-list > div:nth-child(1)'
   }
 }
