@@ -44,12 +44,12 @@ const { pageObject } = require('../../pageObject');
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/schedule_post_05.png'})
 
 	//When I click a schedule ratio btn
-	await page.click('.gh-publishmenu-section > div:nth-child(2) > div:nth-child(1)')
+	await page.click(pageObject.post.publishRadioBtn)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/schedule_post_06.png'})
 
 	//When I click a publish btn
-	await page.click('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view')
+	await page.click(pageObject.post.publishMenu)
 	await new Promise(r => setTimeout(r, 2000));
 	await page.screenshot({path: 'comparativeReport/screenshots/ref-3.3/schedule_post_07.png'})
 

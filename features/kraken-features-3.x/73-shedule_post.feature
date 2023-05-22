@@ -16,9 +16,11 @@ Scenario: Schedule page con datos invalidos en el titulo
   When I click new post
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/4-schedule-post-v1"
-  When I enter post dinamic title
-  When I enter post dinamic description
+  When I enter post dinamic title number
+  And I wait for 2 seconds
+  When I enter post dinamic description number
   And I take screenshot with name "ref-3.x/5-schedule-post-v1"
+  And I wait for 3 seconds
   When I click publish
   And I wait for 2 seconds
   And I take screenshot with name "ref-3.x/6-schedule-post-v1"

@@ -91,10 +91,42 @@ When('I enter post description edition {string}', async function (postDescriptio
   return await element.setValue(postDescription);
 });
 
+When('I enter post description edition numeric', async function () {
+  let element = await this.driver.$(pageObject.post.descriptionImput);
+  return await element.setValue(dataAPriori[rowRandom].number50);
+});
+
+When('I enter post description edition character especial', async function () {
+  let element = await this.driver.$(pageObject.post.descriptionImput);
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+
 When('I enter post dinamic title', async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(pageObject.post.titleImput);
     return await element.setValue(data.title);
+  });
+});
+
+When('I enter post especial characters dinamic title', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.caracteresEspeciales);
+  });
+});
+
+When('I enter post dinamic title too long', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.description256);
+  });
+});
+
+When('I enter post dinamic title number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.number10);
   });
 });
 
@@ -119,6 +151,13 @@ When('I enter post dinamic description', async function () {
   }).catch((value) => console.error(value));
 });
 
+When('I enter post dinamic description number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.descriptionImput);
+    return await element.setValue(data.number500);
+  }).catch((value) => console.error(value));
+});
+
 When('I click publish', async function () {
   let element = await this.driver.$(pageObject.post.publishBtn);
   return await element.click()
@@ -130,60 +169,64 @@ When('I validate publish btn', async function () {
 });
 
 When('I click publish now', async function () {
-  let element = await this.driver.$('.gh-publishmenu-button');
+  let element = await this.driver.$(pageObject.post.publishNowBtn);
   return await element.click()
 });
 
 When('I click a post link', async function () {
-  let element = await this.driver.$('.gh-list-row.gh-posts-list-item:last-child');
+  let element = await this.driver.$(pageObject.post.postLink);
   return await element.click()
 });
 
 When('I click a unpublish ratio btn', async function () {
-  let element = await this.driver.$('.gh-publishmenu-radio-button:first-child');
+  let element = await this.driver.$(pageObject.post.unpublishRadioBtn);
   return await element.click()
 });
 
 When('I click a publish btn', async function(){
-  let element = await this.driver.$('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
+  let element = await this.driver.$(pageObject.post.publishMenu);
   return await element.click()
 });
 
 When('I click a schedule ratio btn', async function(){
-  let element = await this.driver.$('.gh-publishmenu-section > div:nth-child(2) > div:nth-child(1)');
+  let element = await this.driver.$(pageObject.post.publishRadioBtn);
   return await element.click()
 });
 
 Then('I get title post succesfully', async function () {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Published');
 });
 
 Then('I get title post deleted succesfully', async function () {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Saved');
 });
 
 Then('I get title post updated succesfully', async function () {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Updated');
 });
 
 Then('I see at least one post', async function () {
-  let element = await this.driver.$('.gh-list-row.gh-posts-list-item');
+  let element = await this.driver.$(pageObject.post.postList);
   expect(element).to.exist;
 });
 
 Then('I get title post scheduled succesfully', async function () {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Scheduled');
 });
 
-//New Tag Step
+Then('I get title post error too long', async function () {
+  let element = await this.driver.$('.gh-alert.gh-alert-red.ember-view > div:nth-child(1)').getText();
+  expect(element).to.contain('Saving failed: Title cannot be longer than 255 characters.');
+});
 
+//New Tag Step
 When('I enter link tag menu', async function() {
   let element = await this.driver.$(pageObject.tag.linkMenu);
-  let tags = await this.driver.$$('.tags-list > *');
+  let tags = await this.driver.$$(pageObject.tag.tagList);
   this.countTags = tags.length;
   return await element.click();
 })
@@ -198,6 +241,16 @@ When('I enter name tag', async function () {
   return await element.setValue(dataAPriori[rowRandom].title);
 });
 
+When('I enter name tag numeric', async function () {
+  let element = await this.driver.$(pageObject.tag.nameImput);
+  return await element.setValue(dataAPriori[rowRandom].number10);
+});
+
+When('I enter name tag character especial', async function () {
+  let element = await this.driver.$(pageObject.tag.nameImput);
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 When('I enter name tag null', async function () {
   let element = await this.driver.$(pageObject.tag.nameImput);
   return await element.setValue(dataAPriori[rowRandom].null);
@@ -209,12 +262,12 @@ When('I enter name tag too long', async function () {
 });
 
 When('I enter color tag', async function () {
-  let element = await this.driver.$('.input-color > input:nth-child(1)');
+  let element = await this.driver.$(pageObject.tag.colorImput);
   return await element.setValue(dataAPriori[rowRandom].color.split('#')[1]);
 });
 
 When('I enter invalid color tag', async function () {
-  let element = await this.driver.$('.input-color > input:nth-child(1)');
+  let element = await this.driver.$(pageObject.tag.colorImput);
   return await element.setValue(dataAPriori[rowRandom].color);
 });
 
@@ -228,10 +281,31 @@ When('I enter slug tag too long', async function () {
   return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
+When('I enter slug tag numeric', async function () {
+  let element = await this.driver.$('#tag-slug');
+  return await element.setValue(dataAPriori[rowRandom].number10);
+});
+
+When('I enter slug tag character especial', async function () {
+  let element = await this.driver.$('#tag-slug');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 When('I enter description tag', async function () {
   let element = await this.driver.$('#tag-description');
   return await element.setValue(dataAPriori[rowRandom].description100);
 });
+
+When('I enter description tag numeric', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(dataAPriori[rowRandom].number20);
+});
+
+When('I enter description tag character especial', async function () {
+  let element = await this.driver.$('#tag-description');
+  return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
 
 When('I enter description tag too long', async function () {
   let element = await this.driver.$('#tag-description');
@@ -239,48 +313,48 @@ When('I enter description tag too long', async function () {
 });
 
 When('I click save tag', async function() {
-  let element = await this.driver.$('.view-actions > button:nth-child(1)');
+  let element = await this.driver.$(pageObject.tag.saveBtn);
   return await element.click();
 })
 
 Then('Evaluate the tag created', async function(){
-  let tags = await this.driver.$$('.tags-list > *');
+  let tags = await this.driver.$$(pageObject.tag.tagList);
   expect(tags.length).to.greaterThan(0)
 });
 
 Then('Evaluate message to name tag null', async function(){
-  let element = await this.driver.$('.response').getText();
+  let element = await this.driver.$(pageObject.tag.responseMessage).getText();
   expect(element).contains('You must specify a name for the tag');
 });
 
 Then('Evaluate message to invalid color', async function(){
-  let element = await this.driver.$('.error > p:nth-child(2)').getText();
+  let element = await this.driver.$(pageObject.tag.invalidMessage).getText();
   expect(element).contains('The color should be in valid hex format');
 });
 
 Then('Evaluate message to description to long', async function(){
-  let element = await this.driver.$('.form-group.error.ember-view > p').getText();
+  let element = await this.driver.$(pageObject.tag.longMessage).getText();
   expect(element).contains('Description cannot be longer than 500 characters');
 });
 
 Then('I get text error save', async function() {
-  let element = await this.driver.$('.view-actions > button:nth-child(1)').getText();
+  let element = await this.driver.$(pageObject.tag.saveBtn).getText();
   expect(element).contains('Retry');
 });
 
 Then('Evaluate message to name tag too long', async function(){
-  let element = await this.driver.$('.response').getText();
+  let element = await this.driver.$(pageObject.tag.responseMessage).getText();
   expect(element).contains('Tag names cannot be longer than 191 characters.');
 });
 
 //Delete tag
 When('I save the total tags', async function() {
-  let tags = await this.driver.$$('.tags-list > li');
+  let tags = await this.driver.$$(pageObject.tag.tagListLi);
   this.countTags = tags.length;
 })
 
 When('I clic edit tag', async function() {
-  let element = await this.driver.$('.tags-list:last-child');
+  let element = await this.driver.$(pageObject.tag.tagToEdit);
   return await element.click();
 })
 
@@ -290,126 +364,136 @@ When('I clic delete tag', async function() {
 })
 
 When('I clic confirm delete tag', async function() {
-  let element = await this.driver.$('.modal-footer > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.tag.deleteBtn);
   return await element.click();
 })
 
 Then('Evaluate the tag deleted', async function(){
-  let tags = await this.driver.$$('.tags-list > li');
+  let tags = await this.driver.$$(pageObject.tag.tagListLi);
   let totalTags = this.countTags -1;
   expect(tags.length).to.equals(totalTags);
 })
 
 //Edit tag
 When('I clic edit save tag', async function() {
-  let element = await this.driver.$('.tags-list > li > a > h3');
+  let element = await this.driver.$(pageObject.tag.tagListTitle);
   console.log('ELEMENTS', element);
 })
 
 //New Internal Tag
 When('I enter new internal tag', async function() {
-  let element = await this.driver.$('.view-actions > div > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.tag.internalTagBtn);
   return await element.click();
 })
 
 //Edit staff
 When('I enter link staff menu', async function() {
-  let element = await this.driver.$('.gh-nav-list > li:nth-child(5)');
+  let element = await this.driver.$(pageObject.staff.staffMenu);
   return await element.click();
 })
 
 When('I clic edit owner', async function() {
-  let element = await this.driver.$('.apps-grid > div:nth-child(3) > a');
+  let element = await this.driver.$(pageObject.staff.ownerBtn);
   return await element.click();
-})
+});
+
+When('I enter bio owner too long', async function () {
+  let element = await this.driver.$('.ember-text-area.gh-input.ember-view');
+  return await element.setValue(dataAPriori[rowRandom].description256);
+});
 
 When('I enter name owner', async function () {
-  let element = await this.driver.$('#user-name');
+  let element = await this.driver.$(pageObject.staff.nameImput);
   return await element.setValue(dataAPriori[rowRandom].fullName);
 });
 
 When('I enter name owner too long', async function () {
-  let element = await this.driver.$('#user-name');
+  let element = await this.driver.$(pageObject.staff.nameImput);
   return await element.setValue(dataAPriori[rowRandom].description256);
 });
 
 When('I enter name owner null', async function () {
-  let element = await this.driver.$('#user-name');
+  let element = await this.driver.$(pageObject.staff.nameImput);
   return await element.setValue(' ');
 });
 
 When('I enter name owner aleatorio', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('#user-name');
+    let element = await this.driver.$(pageObject.staff.nameImput);
     return await element.setValue(data.email);
   })
 });
 
 When('I enter email owner null', async function () {
-  let element = await this.driver.$('#user-email');
+  let element = await this.driver.$(pageObject.staff.emailImput);
   return await element.setValue(' ');
 });
 
 When('I click off page', async function(){
-  let element = await this.driver.$('.user-image.bg-whitegrey');
+  let element = await this.driver.$(pageObject.staff.offPage);
   return await element.click();
 })
 
 When('I save edit owner', async function() {
-  let element = await this.driver.$('.gh-btn.gh-btn-blue');
+  let element = await this.driver.$(pageObject.staff.saveBtn);
   return await element.click();
 });
 
 Then('I get name edit owner', async function() {
-  let element = await this.driver.$('.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3').getText();
+  let element = await this.driver.$(pageObject.staff.nameToEditImput).getText();
   expect(element).to.exist;
 });
 
 Then('Evaluate name staff too long error', async function() {
-  let element = await this.driver.$('.response').getText();
+  let element = await this.driver.$(pageObject.tag.responseMessage).getText();
   expect(element).contains('Name is too long');
 });
 
 Then('Evaluate name staff null error', async function() {
-  let element = await this.driver.$('.response').getText();
+  let element = await this.driver.$(pageObject.tag.responseMessage).getText();
   expect(element).contains('Please enter a name.');
 });
 
 Then('Evaluate email staff null error', async function() {
-  let element = await this.driver.$('.form-group.error.ember-view > p:nth-child(3)').getText();
+  let element = await this.driver.$(pageObject.staff.errorMessage).getText();
   expect(element).contains('Please supply a valid email address');
 });
 
+Then('Evaluate bio too long', async function(){
+  let element = await this.driver.$('.bio-container.form-group.error.ember-view').getText();
+  expect(element).contains('Bio is too long');
+})
+
 //Edit mail staff fail
 When('I enter email owner {string}', async function (name) {
-  let element = await this.driver.$('#user-email');
+  let element = await this.driver.$(pageObject.staff.emailImput);
   return await element.setValue(name);
 });
 
 Then('I validate error button save', async function() {
-  let element = await this.driver.$('.gh-btn.gh-btn-blue').getText();
+  let element = await this.driver.$(pageObject.staff.saveBtn).getText();
   expect(element).to.equals('Retry');
 })
 
 // New post draft
 When('I click Drafts', async function () {
-  let element = await this.driver.$('#ember1288');
+  let element = await this.driver.$(pageObject.post.draffBtn);
   return await element.click()
 });
 
 When('I click post', async function () {
-  let element = await this.driver.$('#ember1406');
+  let element = await this.driver.$(pageObject.post.postBtn);
   return await element.click()
 });
 
 Then('I evaluate the draft created', async function() {
-  let tags = await this.driver.$$('.posts-list > li');
+  let tags = await this.driver.$$(pageObject.post.postListLi);
   this.countTags < tags.length;
 })
 
 // Create new page
 When('I enter link pages menu', async function() {
-  let element = await this.driver.$('.gh-nav-list > li:nth-child(3)');
+  let element = await this.driver.$(pageObject.page.newPageBtn);
   return await element.click();
 })
 
@@ -464,13 +548,13 @@ Then('I evaluate btn publish', async function(){
 });
 
 Then('I get state new page', async function() {
-  let element = await this.driver.$('fw4.midgrey-l2').getText();
+  let element = await this.driver.$(pageObject.page.newPageValidate).getText();
   expect(element).to.contain('Published')
 })
 
 // Edit page
 When('I click a page link', async function () {
-  let element = await this.driver.$('.gh-content-entry-title');
+  let element = await this.driver.$(pageObject.page.editBtn);
   return await element.click()
 });
 
@@ -485,17 +569,17 @@ When('I click update', async function () {
 });
 
 When('I click update now', async function () {
-  let element = await this.driver.$('.gh-publishmenu-button');
+  let element = await this.driver.$(pageObject.tag.publishNowBtn);
   return await element.click()
 });
 
 Then('I get state page edited', async function() {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Updated')
 })
 
 Then('I get state page edited without title', async function() {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Cant Update')
 });
 
@@ -506,98 +590,103 @@ Then('I get state page cant edit', async function(){
 
 // Delete page
 When('I click a settings btn', async function() {
-  let element = await this.driver.$('.post-settings');
+  let element = await this.driver.$(pageObject.page.postSettingsBtn);
   return await element.click();
 })
 
 When('I click a delete btn', async function () {
-  let element = await this.driver.$('.settings-menu-delete-button');
+  let element = await this.driver.$(pageObject.page.deleteBtn);
   return await element.click();
 });
 
 When('I confirm delete btn', async function () {
-  let element = await this.driver.$(
-    '.gh-btn.gh-btn-red.gh-btn-icon.ember-view'
-  );
+  let element = await this.driver.$(pageObject.page.deleteConfirmBtn);
   return await element.click();
 });
 
 Then('I see no pages text', async function () {
-  let element = await this.driver.$('.no-posts-box');
+  let element = await this.driver.$(pageObject.page.noPostMessage);
   expect(element).to.exist;
 });
 
 // List the pages
 Then('I see the pages', async function() {
-  let tags = await this.driver.$$('.gh-list > *');
+  let tags = await this.driver.$$(pageObject.page.pageList);
   expect(tags.length).to.greaterThanOrEqual(0)
 })
 
 // Change site title
 When('I click expand button', async function () {
-  let element = await this.driver.$(
-    '.gh-setting-first .gh-setting-action .gh-btn'
-  );
+  let element = await this.driver.$(pageObject.page.expandBtn);
   return await element.click();
 });
 
 When('I enter site title too long', async function () {
   aleatorioDinamico(async (data) => {
-  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  let element = await this.driver.$(pageObject.page.titleImput);
   return await element.setValue(data.description256);
   })
 });
 
 When('I enter site title aleatorio', async function () {
   aleatorioDinamico(async (data) => {
-    let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+    let element = await this.driver.$(pageObject.page.titleImput);
     return await element.setValue(data.title);
   });
 });
 
+When('I enter site title especial character', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.page.titleImput);
+    return await element.setValue(data.caracteresEspeciales);
+  });
+});
+
+When('I enter site title number', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.page.titleImput);
+    return await element.setValue(data.number10);
+  });
+});
 
 When('I click save settings', async function () {
-  let element = await this.driver.$(
-    '.gh-btn.gh-btn-blue.gh-btn-icon.ember-view'
-  );
+  let element = await this.driver.$(pageObject.settings.saveBtn);
   return await element.click();
 });
 
 Then('I get website title updated', async function () {
-  let element = await this.driver.$('.gh-nav-menu-details-blog').getText();
+  let element = await this.driver.$(pageObject.settings.detailsMenu).getText();
   expect(element).to.exist;
 });
 
 Then('I get title error editing website', async function(){
-  let element = await this.driver.$('.form-group.error.ember-view > p:nth-child(2)').getText();
+  let element = await this.driver.$(pageObject.settings.errorMessage).getText();
   expect(element).contains('Title is too long');
 });
 
 // Change website language
 When('I click last expand button', async function () {
-  let element = await this.driver.$(
-    '.gh-setting-last .gh-setting-action .gh-btn'
-  );
+  let element = await this.driver.$('.gh-setting-last .gh-setting-action .gh-btn');
   return await element.click();
 });
 
 When('I enter new lenguage identifier', async function () {
-  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  let element = await this.driver.$(pageObject.page.titleImput);
   return await element.setValue(dataAPriori[rowRandom].language);
 });
 
 When('I enter new lenguage identifier null', async function () {
-  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  let element = await this.driver.$(pageObject.page.titleImput);
   return await element.setValue(dataAPriori[rowRandom].null);
 });
 
 When('I enter new lenguage identifier 1000 caracteres', async function () {
-  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  let element = await this.driver.$(pageObject.page.titleImput);
   return await element.setValue(dataAPriori[rowRandom].description1000);
 });
 
 When('I enter new lenguage identifier special characters', async function () {
-  let element = await this.driver.$('.ember-text-field.gh-input.ember-view');
+  let element = await this.driver.$(pageObject.page.titleImput);
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
 });
 
@@ -689,6 +778,15 @@ When("I enter site description aleatorio", async function () {
   });
 });
 
+When("I enter site description number", async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(
+      ".description-container .ember-text-field.gh-input.ember-view"
+    );
+    return await element.setValue(data.number10);
+  });
+});
+
 When("I enter site description too long aleatorio", async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(
@@ -744,57 +842,55 @@ When('I take screenshot with name {string}', async function (screenName) {
 //New Tag Step
 When('I enter link tag menu v5', async function() {
   let element = await this.driver.$('.gh-nav-list.gh-nav-manage > li:nth-child(3)');
-  let tags = await this.driver.$$('.tags-list > *');
+  let tags = await this.driver.$$(pageObject.tag.tagList);
   this.countTags = tags.length;
   return await element.click();
 })
 
 // New publication step
 When('I click new post v5', async function () {
-  let element = await this.driver.$('.view-actions-top-row > a:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.actionsRow);
   return await element.click()
 });
 
 When('I click publish v5', async function () {
-  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.publicacion.itemsBtn);
   return await element.click()
 });
 
 When('I click publish now v5', async function () {
-  let element = await this.driver.$('.gh-publish-cta > button:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.publishBtn);
   return await element.click()
 });
 
 Then('I get post succesfully text', async function() {
-  let element = await this.driver.$('.gh-publish-cta > button > span').getText();
+  let element = await this.driver.$(pageObject.publicacion.publishCtaBtn).getText();
   expect(element).to.contain('Publish post, right now')
 })
 
 When('I click a unpublish ratio btn v5', async function () {
-  let element = await this.driver.$('.flex.items-center > button:nth-child(2)');
+  let element = await this.driver.$(pageObject.publicacion.itemsBtn);
   return await element.click()
 });
 
 When('I click a publish btn v5', async function(){
-  let element = await this.driver.$('.gh-revert-to-draft');
+  let element = await this.driver.$(pageObject.publicacion.revertDraft);
   return await element.click()
 });
 
 When('I click a post link v5', async function () {
-  let element = await this.driver.$('.posts-list.gh-list > div:nth-child(1)');
+  let element = await this.driver.$(pageObject.publicacion.postLists);
   return await element.click()
 });
 
 Then('I get post deleted text', async function() {
-  let element = await this.driver.$('.gh-notification-title').getText();
+  let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Post successfully reverted to a draft.')
 })
 
 //Change language v5
 When('I click last expand button v5', async function () {
-  let element = await this.driver.$(
-    '.gh-expandable > div:nth-child(3) > div:nth-child(1) > button'
-  );
+  let element = await this.driver.$('.gh-expandable > div:nth-child(3) > div:nth-child(1) > button');
   return await element.click();
 });
 
@@ -807,9 +903,7 @@ When('I click save settings v5', async function () {
 
 //Change language v5
 When('I click expand button v5', async function () {
-  let element = await this.driver.$(
-    '.gh-expandable > div:nth-child(1) > div:nth-child(1) > button'
-  );
+  let element = await this.driver.$('.gh-expandable > div:nth-child(1) > div:nth-child(1) > button');
   return await element.click();
 });
 
@@ -831,7 +925,7 @@ When('I click a settings btn v5', async function () {
 });
 
 When('I click a delete btn v5', async function () {
-  let element = await this.driver.$('.settings-menu-delete-button');
+  let element = await this.driver.$(pageObject.page.deleteBtn);
   return await element.click();
 });
 
@@ -854,6 +948,11 @@ When("I enter post long title", async function () {
 When("I enter post title with special characters", async function () {
   let element = await this.driver.$(".gh-editor-title ");
   return await element.setValue(dataAPriori[rowRandom].caracteresEspeciales);
+});
+
+When("I enter post title with numbers", async function () {
+  let element = await this.driver.$(".gh-editor-title ");
+  return await element.setValue(dataAPriori[rowRandom].number20);
 });
 
 Then("I see draft post in the posts list", async function () {

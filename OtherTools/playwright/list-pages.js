@@ -31,7 +31,7 @@ const { pageObject } = require('../../pageObject');
 
 
     // Abrir menú Pages
-    await page.click('.gh-nav-list > li:nth-child(3)')
+    await page.click(pageObject.page.newPageBtn)
     await new Promise(r => setTimeout(r, 9000));
     console.log(`Clicked "Pages". URL is now ${page.url()}`)
     await new Promise(r => setTimeout(r, 5000));

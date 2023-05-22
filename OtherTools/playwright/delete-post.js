@@ -1,7 +1,7 @@
 //Importar Playwright
-const playwright = require('playwright');
-const { nodes, user } = require('../../utils/utils');
-const { pageObject } = require('../../pageObject');
+const playwright = require("playwright");
+const { nodes, user } = require("../../utils/utils");
+const { pageObject } = require("../../pageObject");
 
 //Función flecha asíncrona
 (async () => {
@@ -106,4 +106,4 @@ const { pageObject } = require('../../pageObject');
     await browser.close();
   }
   return;
-})();//Llamado propio de la función
+})(); //Llamado propio de la función
