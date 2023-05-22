@@ -18,6 +18,7 @@ Scenario: Schedule page con datos correctos
   And I take screenshot with name "ref-3.x/4-schedule-post-v1"
   When I enter post dinamic title
   When I enter post dinamic description
+  And I wait for 3 seconds
   And I take screenshot with name "ref-3.x/5-schedule-post-v1"
   When I click publish
   And I wait for 2 seconds

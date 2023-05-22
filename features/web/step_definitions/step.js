@@ -98,6 +98,13 @@ When('I enter post dinamic title', async function () {
   });
 });
 
+When('I enter post dinamic title too long', async function () {
+  aleatorioDinamico(async (data) => {
+    let element = await this.driver.$(pageObject.post.titleImput);
+    return await element.setValue(data.description256);
+  });
+});
+
 When('I enter post dinamic exceeds title', async function () {
   aleatorioDinamico(async (data) => {
     let element = await this.driver.$(pageObject.post.titleImput);
@@ -177,6 +184,11 @@ Then('I see at least one post', async function () {
 Then('I get title post scheduled succesfully', async function () {
   let element = await this.driver.$(pageObject.post.titleNotification).getText();
   expect(element).to.contain('Scheduled');
+});
+
+Then('I get title post error too long', async function () {
+  let element = await this.driver.$('.gh-alert.gh-alert-red.ember-view > div:nth-child(1)').getText();
+  expect(element).to.contain('Saving failed: Title cannot be longer than 255 characters.');
 });
 
 //New Tag Step
