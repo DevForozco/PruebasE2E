@@ -36,7 +36,7 @@ const { pageObject } = require('../../pageObject');
     await page.screenshot({
       path: "./publicationLenguageExpanded.png",
     });
-    await page.fill(".ember-text-field.gh-input.ember-view", "es");
+    await page.fill(pageObject.post.itemText, "es");
     await page.screenshot({
       path: "./publicationLenguageEdited.png",
     });

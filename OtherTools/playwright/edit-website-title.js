@@ -33,7 +33,7 @@ const { pageObject } = require('../../pageObject');
     await page.screenshot({
       path: "./titleSectionExpanded.png",
     });
-    await page.fill(".ember-text-field.gh-input.ember-view", "New site title");
+    await page.fill(pageObject.post.itemText, "New site title");
     await page.screenshot({
       path: "./websiteTitleEdited.png",
     });

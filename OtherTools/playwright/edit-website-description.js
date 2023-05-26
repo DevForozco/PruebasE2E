@@ -34,7 +34,7 @@ const { pageObject } = require('../../pageObject');
       path: "comparativeReport/screenshots/ref-3.3/descriptionSectionExpanded.png",
     });
     await page.fill(
-      ".description-container .ember-text-field.gh-input.ember-view",
+      pageObject.post.descriptionAleatory,
       "This is the new description for Ghost!"
     );
     await page.screenshot({

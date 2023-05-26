@@ -37,7 +37,7 @@ const { pageObject } = require('../../pageObject');
     });
     console.log("Design settings screen loaded");
     // Editar un item de la nav
-    await page.fill(".ember-text-field.gh-input.ember-view", "Index");
+    await page.fill(pageObject.post.itemText, "Index");
     await page.click(".gh-btn.gh-btn-blue.gh-btn-icon.ember-view");
     await new Promise((r) => setTimeout(r, 1000));
     await page.screenshot({

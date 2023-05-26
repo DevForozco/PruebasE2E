@@ -94,7 +94,7 @@ const { pageObject } = require("../../pageObject");
 
     //When I click a publish btn
     await page.click(
-      ".gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view"
+      pageObject.post.blueBtn
     );
     await new Promise((r) => setTimeout(r, 2000));
     await page.screenshot({

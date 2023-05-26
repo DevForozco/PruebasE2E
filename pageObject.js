@@ -19,7 +19,23 @@ exports.pageObject = {
     postList: '.gh-list-row.gh-posts-list-item',
     draffBtn: '#ember1288',
     postBtn: '#ember1406',
-    postListLi: '.posts-list > li'
+    postListLi: '.posts-list > li',
+    alertError: '.gh-alert.gh-alert-red.ember-view > div:nth-child(1)',
+    navigationItemBtn: '.gh-blognav-delete',
+    navigationDelete: '.gh-blognav-item.gh-blognav-item--sortable.ember-view',
+    itemText: '.ember-text-field.gh-input.ember-view',
+    itemUrl: '.gh-blognav-url.ember-view > input',
+    updateNavItem: '.retry_svg__retry-animated',
+    navIndex: '.nav-index',
+    siteDescription: '.description-container .ember-text-field.gh-input.ember-view',
+    descriptionAleatory: '.description-container .ember-text-field.gh-input.ember-view',
+    descriptionUpdated: 'meta[name="description"]',
+    descriptionNewSite: 'meta[content="New site description"]',
+    longDescription: '.description-container.form-group.error.ember-view > p:nth-child(2)',
+    lastExpandBtn: '.gh-expandable > div:nth-child(3) > div:nth-child(1) > button',
+    postListBadge: '.gh-content-status-draft.gh-badge.gh-badge-purple.nowrap',
+    blueBtn: '.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view',
+    publishBtnTrigger: '.ember-view ember-basic-dropdown-trigger.gh-btn gh-btn-outline.gh-publishmenu-trigger'
   },
   tag: {
     linkMenu: '.gh-nav-list > li:nth-child(4)',
@@ -36,7 +52,12 @@ exports.pageObject = {
     longMessage: '.form-group.error.ember-view > p',
     tagToEdit: '.tags-list:last-child',
     deleteBtn: '.modal-footer > button:nth-child(2)',
-    internalTagBtn: '.view-actions > div > button:nth-child(2)'
+    internalTagBtn: '.view-actions > div > button:nth-child(2)',
+    deleteTag: '.gh-btn.gh-btn-red',
+    identificacion: '#identification',
+    password: '#password',
+    loginBtn: '#ember5',
+    tagMenu: '.gh-nav-list.gh-nav-manage > li:nth-child(3)'
   },
   staff: {
     staffMenu: '.gh-nav-list > li:nth-child(5)',
@@ -47,7 +68,9 @@ exports.pageObject = {
     saveBtn: '.gh-btn.gh-btn-blue',
     nameToEditImput: '.apps-grid > div:nth-child(3) > a > article > div:nth-child(1) > :nth-child(2) > h3',
     errorMessage: '.form-group.error.ember-view > p:nth-child(3)',
-
+    descriptionText: '.ember-text-area.gh-input.ember-view',
+    groupError: '.bio-container.form-group.error.ember-view',
+    backBtn: '.blue.link.fw4.flex.items-center.ember-view'
   },
   page: {
     newPageBtn: '.gh-nav-list > li:nth-child(3)',
@@ -59,12 +82,20 @@ exports.pageObject = {
     noPostMessage: '.no-posts-box',
     pageList: '.gh-list > *',
     expandBtn: '.gh-setting-first .gh-setting-action .gh-btn',
-    titleImput: '.ember-text-field.gh-input.ember-view'
+    titleImput: '.ember-text-field.gh-input.ember-view',
+    pageDeleted: '.gh-post-list-cta.edit'
   },
   settings: {
     saveBtn: '.gh-btn.gh-btn-blue.gh-btn-icon.ember-view',
     detailsMenu: '.gh-nav-menu-details-blog',
-    errorMessage: '.form-group.error.ember-view > p:nth-child(2)'
+    errorMessage: '.form-group.error.ember-view > p:nth-child(2)',
+    expandBtn: '.gh-setting-last .gh-setting-action .gh-btn',
+    languaje: 'html[lang="es"]',
+    saveSettingsBtn: '.view-actions > button',
+    expandBtnV5: '.gh-expandable > div:nth-child(1) > div:nth-child(1) > button',
+    detailSiteTitle: '.gh-nav-menu-details-sitetitle',
+    navigationDeleted: '.gh-main-section-content > .gh-blognav-delete',
+    menuToggle: '.settings-menu-toggle'
   },
   publicacion: {
     actionsRow: '.view-actions-top-row > a:nth-child(1)',
